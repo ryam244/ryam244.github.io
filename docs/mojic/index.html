@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mojic サポート</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6; color: #333; background: #FFF7F0; min-height: 100vh;
+        }
+        .hero {
+            background: linear-gradient(150deg, #FF6B35 0%, #E64A19 60%, #BF360C 100%);
+            color: white; padding: 60px 20px 50px; text-align: center;
+        }
+        .app-icon {
+            width: 110px; height: 110px; border-radius: 26px;
+            background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.25);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .app-icon svg { width: 58px; height: 58px; fill: white; }
+        .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .hero .tagline { font-size: 1.05rem; opacity: 0.85; margin-bottom: 16px; }
+        .version-badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+        .container { max-width: 820px; margin: 0 auto; padding: 40px 20px 60px; }
+        .card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+        .card-title { color: #E64A19; font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #FFE0D6; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+        .feature { padding: 20px 16px; background: #FFF3EE; border-radius: 14px; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .feature:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(230,74,25,0.1); }
+        .feature-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .feature h4 { color: #222; font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+        .feature p { color: #777; font-size: 0.82rem; line-height: 1.5; }
+        .faq-list { display: flex; flex-direction: column; }
+        .faq-item { padding: 20px 0; border-bottom: 1px solid #F0F0F0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-item:first-child { padding-top: 0; }
+        .faq-q { font-weight: 600; color: #222; font-size: 0.95rem; margin-bottom: 8px; display: flex; gap: 8px; }
+        .faq-q::before { content: 'Q'; background: #E64A19; color: white; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .faq-a { color: #555; font-size: 0.92rem; line-height: 1.7; padding-left: 30px; }
+        .contact-card { background: linear-gradient(135deg, #FFE0D6 0%, #FFCCBB 100%); border-radius: 18px; padding: 36px 30px; text-align: center; margin-bottom: 20px; }
+        .contact-card h2 { color: #BF360C; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+        .contact-card p { color: #444; font-size: 0.92rem; margin-bottom: 22px; line-height: 1.7; }
+        .contact-btn { display: inline-flex; align-items: center; gap: 8px; background: #E64A19; color: white; padding: 14px 36px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(230,74,25,0.35); }
+        .contact-btn:hover { background: #BF360C; transform: translateY(-2px); }
+        .footer { text-align: center; margin-top: 10px; color: #888; font-size: 0.88rem; }
+        .footer a { color: #E64A19; text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 12px; }
+        .footer-links a { margin: 0 10px; }
+        @media (max-width: 480px) { .hero h1 { font-size: 2rem; } .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="app-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5,4V7H10.5V19H13.5V7H19V4H5Z"/>
+            </svg>
+        </div>
+        <h1>Mojic</h1>
+        <p class="tagline">ホーム画面をもっと自分らしく、もっとおしゃれに</p>
+        <span class="version-badge">Version 1.0</span>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-title">🎨 アプリの特徴</div>
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="feature-icon">📱</span>
+                    <h4>ウィジェット作成</h4>
+                    <p>ホーム画面に自由にテキストパネルを配置</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✏️</span>
+                    <h4>フォント選択</h4>
+                    <p>豊富なフォントから好みのスタイルを選択</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎨</span>
+                    <h4>カラーカスタマイズ</h4>
+                    <p>背景色・文字色を自由に組み合わせ</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📐</span>
+                    <h4>サイズ調整</h4>
+                    <p>小・中・大サイズから選んでレイアウト</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">💾</span>
+                    <h4>テンプレート保存</h4>
+                    <p>作成したデザインをテンプレートとして保存</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🌙</span>
+                    <h4>ダークモード</h4>
+                    <p>iOSの設定に連動して自動切り替え</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">❓ よくある質問</div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-q">ウィジェットをホーム画面に追加する方法は？</div>
+                    <div class="faq-a">iOSのホーム画面を長押しして編集モードに入り、「＋」ボタンからMojicを選択してください。作成したパネルを追加できます。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">作成できるウィジェットの数に制限はありますか？</div>
+                    <div class="faq-a">無料版では3つまで作成できます。それ以上作成したい場合はプレミアム版をご利用ください。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">ウィジェットの内容は自動で更新されますか？</div>
+                    <div class="faq-a">テキストは手動で更新します。アプリを開いて内容を変更すると、ホーム画面のウィジェットに反映されます。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">作成したウィジェットはバックアップできますか？</div>
+                    <div class="faq-a">設定画面からデータのエクスポートが可能です。機種変更時にも作成したデザインを引き継げます。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <h2>お問い合わせ</h2>
+            <p>ご質問・ご要望・不具合報告など、<br>お気軽にお問い合わせください。<br>通常2〜3営業日以内にご返信いたします。</p>
+            <a href="mailto:contact@div-me.com" class="contact-btn">📧 メールで問い合わせる</a>
+        </div>
+
+        <div class="footer">
+            <div class="footer-links">
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="terms.html">利用規約</a>
+            </div>
+            <p>© 2026 Mojic. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
