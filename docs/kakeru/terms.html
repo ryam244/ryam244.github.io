@@ -7,21 +7,21 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.8; color: #333; background: #F0FAF4; }
-        .hero { background: linear-gradient(150deg, #43A047 0%, #2E7D32 60%, #1B5E20 100%); color: white; padding: 48px 20px 40px; text-align: center; }
+        .hero { background: linear-gradient(150deg, #0f9b58 0%, #0a7a44 60%, #086035 100%); color: white; padding: 48px 20px 40px; text-align: center; }
         .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
         .hero .updated { opacity: 0.8; font-size: 0.9rem; }
         .container { max-width: 820px; margin: 0 auto; padding: 40px 20px 60px; }
         .card { background: white; border-radius: 18px; padding: 36px 40px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); margin-bottom: 20px; }
-        h2 { color: #2E7D32; font-size: 1.1rem; font-weight: 700; margin: 32px 0 12px; padding-left: 12px; border-left: 4px solid #2E7D32; }
+        h2 { color: #0a7a44; font-size: 1.1rem; font-weight: 700; margin: 32px 0 12px; padding-left: 12px; border-left: 4px solid #0a7a44; }
         h2:first-child { margin-top: 0; }
         p { color: #444; margin-bottom: 14px; font-size: 0.95rem; }
         ul { margin: 10px 0 16px; padding-left: 0; list-style: none; }
         ul li { color: #444; font-size: 0.95rem; padding: 6px 0 6px 22px; position: relative; border-bottom: 1px solid #F5F5F5; }
         ul li:last-child { border-bottom: none; }
-        ul li::before { content: '▸'; color: #2E7D32; position: absolute; left: 4px; font-size: 0.75rem; top: 8px; }
-        a { color: #2E7D32; text-decoration: none; }
+        ul li::before { content: '▸'; color: #0a7a44; position: absolute; left: 4px; font-size: 0.75rem; top: 8px; }
+        a { color: #0a7a44; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #2E7D32; font-weight: 600; font-size: 0.92rem; margin-top: 32px; text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #0a7a44; font-weight: 600; font-size: 0.92rem; margin-top: 32px; text-decoration: none; }
         .back-link:hover { text-decoration: none; gap: 10px; }
         .footer { text-align: center; color: #888; font-size: 0.85rem; margin-top: 10px; }
         @media (max-width: 600px) { .card { padding: 28px 22px; } }
@@ -38,13 +38,15 @@
             <p>本利用規約（以下「本規約」）は、Kakeru（以下「本アプリ」）の利用条件を定めるものです。本アプリをご利用になることで、本規約に同意したものとみなされます。</p>
 
             <h2>第2条（サービスの内容）</h2>
-            <p>本アプリは、時間管理・タイマーをサポートするサービスを提供します。主な機能は以下のとおりです：</p>
+            <p>本アプリは、一人暮らしの生活費管理をサポートするサービスを提供します。主な機能は以下のとおりです：</p>
             <ul>
-                <li>カウントダウン・カウントアップタイマー</li>
-                <li>タイマーの保存・管理</li>
-                <li>インターバルタイマー（繰り返し設定）</li>
-                <li>通知アラーム（バックグラウンド対応）</li>
-                <li>タイマー使用履歴の記録</li>
+                <li>サブスク・光熱費・食費・日用品の4カテゴリ管理</li>
+                <li>ダッシュボードによる支出状況の把握</li>
+                <li>サブスクリプション更新リマインダー</li>
+                <li>テンキー入力による支出記録</li>
+                <li>カテゴリ別予算設定と達成状況の確認</li>
+                <li>ドーナツグラフによる支出分析</li>
+                <li>同世代との支出比較</li>
             </ul>
 
             <h2>第3条（禁止事項）</h2>
@@ -58,30 +60,28 @@
             <h2>第4条（免責事項）</h2>
             <p>運営者は、本アプリの利用により生じた損害について一切の責任を負いません。特に以下の事項についてご了承ください：</p>
             <ul>
-                <li>通知の遅延・未達による損害</li>
                 <li>本アプリに登録したデータの消失・破損</li>
+                <li>生活費管理の不備による経済的損害</li>
                 <li>本アプリの不具合・停止による損害</li>
+                <li>同世代比較データの正確性に関する事項</li>
             </ul>
 
             <h2>第5条（データの取り扱い）</h2>
-            <p>タイマーデータはデバイス内にのみ保存されます。詳細は <a href="privacy.html">プライバシーポリシー</a> をご確認ください。</p>
+            <p>支出データはデバイス内にのみ保存されます。詳細は <a href="privacy.html">プライバシーポリシー</a> をご確認ください。</p>
 
-            <h2>第6条（広告の表示）</h2>
-            <p>本アプリは、サービス維持のため広告（Google AdMob）を表示します。</p>
-
-            <h2>第7条（サービスの変更・終了）</h2>
+            <h2>第6条（サービスの変更・終了）</h2>
             <p>運営者は、必要に応じてサービスの内容を変更、または提供を終了することができます。</p>
 
-            <h2>第8条（規約の変更）</h2>
+            <h2>第7条（規約の変更）</h2>
             <p>運営者は、必要に応じて本規約を変更することができます。変更後の規約は本ページへの掲載をもって効力を生じます。</p>
 
-            <h2>第9条（知的財産権）</h2>
+            <h2>第8条（知的財産権）</h2>
             <p>本アプリに関する知的財産権はすべて運営者に帰属します。</p>
 
-            <h2>第10条（準拠法・管轄裁判所）</h2>
+            <h2>第9条（準拠法・管轄裁判所）</h2>
             <p>本規約の解釈にあたっては日本法を準拠法とし、東京地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
 
-            <h2>第11条（お問い合わせ）</h2>
+            <h2>第10条（お問い合わせ）</h2>
             <p><a href="mailto:contact@div-me.com">contact@div-me.com</a></p>
 
             <a href="index.html" class="back-link">← サポートページに戻る</a>

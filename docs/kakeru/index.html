@@ -7,7 +7,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #F0FAF4; min-height: 100vh; }
-        .hero { background: linear-gradient(150deg, #43A047 0%, #2E7D32 60%, #1B5E20 100%); color: white; padding: 60px 20px 50px; text-align: center; }
+        .hero { background: linear-gradient(150deg, #0f9b58 0%, #0a7a44 60%, #086035 100%); color: white; padding: 60px 20px 50px; text-align: center; }
         .app-icon { width: 110px; height: 110px; border-radius: 26px; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .app-icon svg { width: 58px; height: 58px; fill: white; }
         .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
@@ -15,78 +15,120 @@
         .version-badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
         .container { max-width: 820px; margin: 0 auto; padding: 40px 20px 60px; }
         .card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
-        .card-title { color: #2E7D32; font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #C8E6C9; }
+        .card-title { color: #0a7a44; font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #C8E6C9; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
         .feature { padding: 20px 16px; background: #F1F8F2; border-radius: 14px; text-align: center; transition: transform 0.2s ease; }
-        .feature:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(46,125,50,0.1); }
+        .feature:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,155,88,0.1); }
         .feature-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
         .feature h4 { color: #222; font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
         .feature p { color: #777; font-size: 0.82rem; line-height: 1.5; }
+        .category-section { margin-top: 4px; }
+        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+        .category-item { background: #F1F8F2; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px; }
+        .category-item .cat-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .category-item h4 { color: #222; font-size: 0.95rem; font-weight: 600; margin-bottom: 3px; }
+        .category-item p { color: #777; font-size: 0.82rem; line-height: 1.4; margin: 0; }
         .faq-list { display: flex; flex-direction: column; }
         .faq-item { padding: 20px 0; border-bottom: 1px solid #F0F0F0; }
         .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
         .faq-item:first-child { padding-top: 0; }
         .faq-q { font-weight: 600; color: #222; font-size: 0.95rem; margin-bottom: 8px; display: flex; gap: 8px; }
-        .faq-q::before { content: 'Q'; background: #2E7D32; color: white; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .faq-q::before { content: 'Q'; background: #0f9b58; color: white; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
         .faq-a { color: #555; font-size: 0.92rem; line-height: 1.7; padding-left: 30px; }
         .contact-card { background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%); border-radius: 18px; padding: 36px 30px; text-align: center; margin-bottom: 20px; }
         .contact-card h2 { color: #1B5E20; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
         .contact-card p { color: #444; font-size: 0.92rem; margin-bottom: 22px; line-height: 1.7; }
-        .contact-btn { display: inline-flex; align-items: center; gap: 8px; background: #2E7D32; color: white; padding: 14px 36px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(46,125,50,0.35); }
-        .contact-btn:hover { background: #1B5E20; transform: translateY(-2px); }
+        .contact-btn { display: inline-flex; align-items: center; gap: 8px; background: #0f9b58; color: white; padding: 14px 36px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(15,155,88,0.35); }
+        .contact-btn:hover { background: #086035; transform: translateY(-2px); }
         .footer { text-align: center; margin-top: 10px; color: #888; font-size: 0.88rem; }
-        .footer a { color: #2E7D32; text-decoration: none; font-weight: 500; }
+        .footer a { color: #0f9b58; text-decoration: none; font-weight: 500; }
         .footer a:hover { text-decoration: underline; }
         .footer-links { margin-bottom: 12px; }
         .footer-links a { margin: 0 10px; }
-        @media (max-width: 480px) { .hero h1 { font-size: 2rem; } .features-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .hero h1 { font-size: 2rem; } .features-grid { grid-template-columns: repeat(2, 1fr); } .category-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="hero">
         <div class="app-icon">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13,2.05V4.05C17.39,4.59 20.5,8.58 19.96,12.97C19.5,16.61 16.64,19.5 13,19.93V21.93C18.5,21.38 22.5,16.5 21.95,11C21.5,6.25 17.73,2.5 13,2.05M5.67,19.74C7.18,21 9.04,21.79 11,21.93V19.93C9.58,19.75 8.23,19.19 7.1,18.32M7.1,5.74C8.22,4.84 9.57,4.26 11,4.06V2.06C9.04,2.21 7.17,3 5.67,4.26M4.26,7.04C3.38,8.23 2.81,9.58 2.6,11H4.6C4.77,9.57 5.34,8.23 6.23,7.1M2.6,13C2.81,14.42 3.38,15.77 4.26,16.9L5.65,15.5C4.78,14.38 4.22,13.04 4.07,11.65H2.08L2.6,13M11,13V9H9V13L12.5,16.5L13.9,15.1L11,13Z"/>
+                <path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/>
             </svg>
         </div>
         <h1>Kakeru</h1>
-        <p class="tagline">タイマーで時間をかしこく使う</p>
+        <p class="tagline">一人暮らしの生活費を、シンプルに管理</p>
         <span class="version-badge">Version 1.0</span>
     </div>
 
     <div class="container">
         <div class="card">
-            <div class="card-title">⏱️ アプリの特徴</div>
+            <div class="card-title">💰 4つのカテゴリで管理</div>
+            <div class="category-section">
+                <div class="category-grid">
+                    <div class="category-item">
+                        <span class="cat-icon">📱</span>
+                        <div>
+                            <h4>サブスク</h4>
+                            <p>定額サービスの更新リマインダー付き管理</p>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <span class="cat-icon">💡</span>
+                        <div>
+                            <h4>光熱費</h4>
+                            <p>電気・ガス・水道など毎月の固定費を記録</p>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <span class="cat-icon">🍱</span>
+                        <div>
+                            <h4>食費</h4>
+                            <p>日々の食費をテンキー入力でかんたん記録</p>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <span class="cat-icon">🧴</span>
+                        <div>
+                            <h4>日用品</h4>
+                            <p>消耗品・雑貨など生活必需品の支出管理</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">✨ アプリの特徴</div>
             <div class="features-grid">
                 <div class="feature">
-                    <span class="feature-icon">⏱️</span>
-                    <h4>タイマー</h4>
-                    <p>カウントダウン・カウントアップに対応</p>
+                    <span class="feature-icon">📊</span>
+                    <h4>ダッシュボード</h4>
+                    <p>今月の支出状況を一目で把握</p>
                 </div>
                 <div class="feature">
                     <span class="feature-icon">🔔</span>
-                    <h4>通知アラーム</h4>
-                    <p>バックグラウンドでも確実にお知らせ</p>
+                    <h4>更新リマインダー</h4>
+                    <p>サブスクの更新日を通知でお知らせ</p>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">📋</span>
-                    <h4>タイマー保存</h4>
-                    <p>よく使うタイマーを名前を付けて保存</p>
+                    <span class="feature-icon">🔢</span>
+                    <h4>テンキー入力</h4>
+                    <p>シンプルな数字入力でサクッと記録</p>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">🔁</span>
-                    <h4>繰り返し設定</h4>
-                    <p>インターバルタイマーで連続した作業に対応</p>
+                    <span class="feature-icon">🎯</span>
+                    <h4>予算管理</h4>
+                    <p>カテゴリごとに月次予算を設定</p>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">📊</span>
-                    <h4>使用履歴</h4>
-                    <p>タイマーの使用記録を確認・分析</p>
+                    <span class="feature-icon">🍩</span>
+                    <h4>ドーナツグラフ</h4>
+                    <p>支出の内訳をビジュアルで分析</p>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">🎵</span>
-                    <h4>サウンド選択</h4>
-                    <p>アラーム音を複数種類から選択可能</p>
+                    <span class="feature-icon">👥</span>
+                    <h4>同世代比較</h4>
+                    <p>同世代の平均と比べて節約意識を高める</p>
                 </div>
             </div>
         </div>
@@ -95,20 +137,20 @@
             <div class="card-title">❓ よくある質問</div>
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-q">アプリを閉じてもタイマーは動きますか？</div>
-                    <div class="faq-a">はい、バックグラウンドでタイマーは動作し続け、終了時に通知でお知らせします。iPhoneの通知設定がオンになっている必要があります。</div>
+                    <div class="faq-q">データはどこに保存されますか？</div>
+                    <div class="faq-a">すべてのデータはお使いのデバイス内にのみ保存されます。外部サーバーへの送信は行いません。</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">複数のタイマーを同時に起動できますか？</div>
-                    <div class="faq-a">はい、複数のタイマーを同時に動かすことができます。それぞれ個別に通知が届きます。</div>
+                    <div class="faq-q">サブスクの更新リマインダーはどう設定しますか？</div>
+                    <div class="faq-a">サブスク登録時に次回更新日を入力すると、更新日の前日に通知でお知らせします。通知を受け取るにはiPhoneの通知設定をオンにしてください。</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">インターバルタイマーはどうやって設定しますか？</div>
-                    <div class="faq-a">タイマー作成画面で「繰り返し」をオンにして、インターバル回数と休憩時間を設定してください。ポモドーロ法などにも活用できます。</div>
+                    <div class="faq-q">予算オーバーしたらどうなりますか？</div>
+                    <div class="faq-a">設定した予算を超えた場合、ダッシュボードでアラート表示されます。カテゴリごとの達成率も確認できます。</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">通知が届きません</div>
-                    <div class="faq-a">iPhoneの「設定」→「Kakeru」→「通知」で通知が許可されているか確認してください。また、おやすみモードや集中モードがオンの場合は通知が届かないことがあります。</div>
+                    <div class="faq-q">同世代比較のデータはどこから来ていますか？</div>
+                    <div class="faq-a">総務省の家計調査など公表データをもとに、参考値として表示しています。個人情報の送信は行いません。</div>
                 </div>
             </div>
         </div>
