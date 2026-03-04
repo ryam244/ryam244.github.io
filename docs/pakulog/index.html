@@ -3,90 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pakulog サポート</title>
+    <title>ペットごはん記録 サポート</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #FDF5EE; min-height: 100vh; }
-        .hero { background: linear-gradient(150deg, #FF8A65 0%, #E64A19 60%, #BF360C 100%); color: white; padding: 60px 20px 50px; text-align: center; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #F3E5F5; min-height: 100vh; }
+        .hero { background: linear-gradient(150deg, #AB47BC 0%, #8E24AA 60%, #6A1B9A 100%); color: white; padding: 60px 20px 50px; text-align: center; }
         .app-icon { width: 110px; height: 110px; border-radius: 26px; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .app-icon svg { width: 58px; height: 58px; fill: white; }
-        .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .hero h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
         .hero .tagline { font-size: 1.05rem; opacity: 0.85; margin-bottom: 16px; }
         .version-badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
         .container { max-width: 820px; margin: 0 auto; padding: 40px 20px 60px; }
         .card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
-        .card-title { color: #E64A19; font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #FFE0CC; }
+        .card-title { color: #8E24AA; font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #E1BEE7; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
-        .feature { padding: 20px 16px; background: #FFF8F5; border-radius: 14px; text-align: center; transition: transform 0.2s ease; }
-        .feature:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(230,74,25,0.1); }
+        .feature { padding: 20px 16px; background: #F8F0FB; border-radius: 14px; text-align: center; transition: transform 0.2s ease; }
+        .feature:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(142,36,170,0.1); }
         .feature-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
         .feature h4 { color: #222; font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
         .feature p { color: #777; font-size: 0.82rem; line-height: 1.5; }
+        .health-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 4px; }
+        .health-item { background: #F8F0FB; border-radius: 10px; padding: 12px; text-align: center; }
+        .health-item .h-icon { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+        .health-item h4 { color: #6A1B9A; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+        .health-item p { color: #888; font-size: 0.78rem; line-height: 1.4; }
         .faq-list { display: flex; flex-direction: column; }
         .faq-item { padding: 20px 0; border-bottom: 1px solid #F0F0F0; }
         .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
         .faq-item:first-child { padding-top: 0; }
         .faq-q { font-weight: 600; color: #222; font-size: 0.95rem; margin-bottom: 8px; display: flex; gap: 8px; }
-        .faq-q::before { content: 'Q'; background: #E64A19; color: white; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .faq-q::before { content: 'Q'; background: #8E24AA; color: white; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
         .faq-a { color: #555; font-size: 0.92rem; line-height: 1.7; padding-left: 30px; }
-        .contact-card { background: linear-gradient(135deg, #FFD7C4 0%, #FFBEA3 100%); border-radius: 18px; padding: 36px 30px; text-align: center; margin-bottom: 20px; }
-        .contact-card h2 { color: #BF360C; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+        .contact-card { background: linear-gradient(135deg, #E1BEE7 0%, #CE93D8 100%); border-radius: 18px; padding: 36px 30px; text-align: center; margin-bottom: 20px; }
+        .contact-card h2 { color: #4A148C; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
         .contact-card p { color: #444; font-size: 0.92rem; margin-bottom: 22px; line-height: 1.7; }
-        .contact-btn { display: inline-flex; align-items: center; gap: 8px; background: #E64A19; color: white; padding: 14px 36px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(230,74,25,0.35); }
-        .contact-btn:hover { background: #BF360C; transform: translateY(-2px); }
+        .contact-btn { display: inline-flex; align-items: center; gap: 8px; background: #8E24AA; color: white; padding: 14px 36px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(142,36,170,0.35); }
+        .contact-btn:hover { background: #6A1B9A; transform: translateY(-2px); }
         .footer { text-align: center; margin-top: 10px; color: #888; font-size: 0.88rem; }
-        .footer a { color: #E64A19; text-decoration: none; font-weight: 500; }
+        .footer a { color: #8E24AA; text-decoration: none; font-weight: 500; }
         .footer a:hover { text-decoration: underline; }
         .footer-links { margin-bottom: 12px; }
         .footer-links a { margin: 0 10px; }
-        @media (max-width: 480px) { .hero h1 { font-size: 2rem; } .features-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .hero h1 { font-size: 1.9rem; } .features-grid { grid-template-columns: repeat(2, 1fr); } .health-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
     <div class="hero">
         <div class="app-icon">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5,9.5A2.5,2.5 0 0,1 2,7A2.5,2.5 0 0,1 4.5,4.5A2.5,2.5 0 0,1 7,7A2.5,2.5 0 0,1 4.5,9.5M9,4.5A2.5,2.5 0 0,1 6.5,2A2.5,2.5 0 0,1 9,4.5A2.5,2.5 0 0,1 11.5,7A2.5,2.5 0 0,1 9,9.5A2.5,2.5 0 0,1 6.5,7A2.5,2.5 0 0,1 9,4.5M15,4.5A2.5,2.5 0 0,1 17.5,2A2.5,2.5 0 0,1 20,4.5A2.5,2.5 0 0,1 17.5,7A2.5,2.5 0 0,1 15,4.5M19.5,9.5A2.5,2.5 0 0,1 17,7A2.5,2.5 0 0,1 19.5,4.5A2.5,2.5 0 0,1 22,7A2.5,2.5 0 0,1 19.5,9.5M17.34,11.04C18,11.67 18,12.33 17.34,13.34L14.17,19C13.5,20 12.83,20.5 12,20.5C11.17,20.5 10.5,20 9.83,19L6.66,13.34C6,12.33 6,11.67 6.66,11.04C8,9.67 10,9 12,9C14,9 16,9.67 17.34,11.04Z"/>
+                <path d="M4.5 11c0-1.38 1.12-2.5 2.5-2.5S9.5 9.62 9.5 11 8.38 13.5 7 13.5 4.5 12.38 4.5 11zm8 0c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5S12.5 12.38 12.5 11zm-3.5 4c-2.5 0-7.5 1.26-7.5 3.75V20h15v-1.25C16.5 16.26 11.5 15 9 15zm0-11.5c-.83 0-1.5.67-1.5 1.5S8.17 6.5 9 6.5s1.5-.67 1.5-1.5S9.83 3.5 9 3.5zM15 3.5c-.83 0-1.5.67-1.5 1.5S14.17 6.5 15 6.5s1.5-.67 1.5-1.5S15.83 3.5 15 3.5z"/>
             </svg>
         </div>
-        <h1>Pakulog</h1>
-        <p class="tagline">ペットの食事を、かんたん・かわいく記録</p>
+        <h1>ペットごはん記録</h1>
+        <p class="tagline">愛犬・愛猫の食事と体重をシンプルに記録</p>
         <span class="version-badge">Version 1.0</span>
     </div>
 
     <div class="container">
         <div class="card">
-            <div class="card-title">🐾 アプリの特徴</div>
+            <div class="card-title">✨ アプリの特徴</div>
             <div class="features-grid">
                 <div class="feature">
-                    <span class="feature-icon">🍽️</span>
-                    <h4>食事記録</h4>
-                    <p>ペットの食事内容・量・時刻をかんたん記録</p>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">🐶</span>
+                    <span class="feature-icon">🐾</span>
                     <h4>複数ペット対応</h4>
-                    <p>犬・猫など複数のペットをまとめて管理</p>
+                    <p>犬・猫・その他を何匹でも登録。ワンタップで切り替え</p>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">🔔</span>
-                    <h4>食事リマインダー</h4>
-                    <p>給餌時刻になるとプッシュ通知でお知らせ</p>
+                    <span class="feature-icon">🍚</span>
+                    <h4>餌やり記録</h4>
+                    <p>1タップ記録 or 詳細入力（フード名・量・写真）</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚖️</span>
+                    <h4>体重管理</h4>
+                    <p>折れ線グラフで体重推移を可視化。前回差分を色分け表示</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🏥</span>
+                    <h4>通院・予防接種</h4>
+                    <p>検診・ワクチン・フィラリア等の記録と次回予定日管理</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📅</span>
+                    <h4>カレンダー表示</h4>
+                    <p>月間カレンダーに記録タイプ別ドット表示。日付タップで一覧</p>
                 </div>
                 <div class="feature">
                     <span class="feature-icon">📊</span>
-                    <h4>食事履歴</h4>
-                    <p>日・週・月ごとの食事量をグラフで確認</p>
+                    <h4>CSV書き出し</h4>
+                    <p>記録データをCSV形式でエクスポート・共有</p>
                 </div>
-                <div class="feature">
-                    <span class="feature-icon">🥘</span>
-                    <h4>フード管理</h4>
-                    <p>よく使うフードを登録して記録を効率化</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">💊 健康チェック機能</div>
+            <div class="health-grid">
+                <div class="health-item">
+                    <span class="h-icon">🚽</span>
+                    <h4>排便</h4>
+                    <p>良好/軟便/硬い/下痢/なし</p>
                 </div>
-                <div class="feature">
-                    <span class="feature-icon">📤</span>
-                    <h4>データ出力</h4>
-                    <p>記録をエクスポートして獣医師への共有に</p>
+                <div class="health-item">
+                    <span class="h-icon">🍽️</span>
+                    <h4>食欲</h4>
+                    <p>旺盛/普通/食欲なし</p>
+                </div>
+                <div class="health-item">
+                    <span class="h-icon">⚡</span>
+                    <h4>元気さ</h4>
+                    <p>元気/普通/ぐったり</p>
+                </div>
+                <div class="health-item">
+                    <span class="h-icon">🤢</span>
+                    <h4>嘔吐</h4>
+                    <p>有無を記録</p>
+                </div>
+                <div class="health-item">
+                    <span class="h-icon">📝</span>
+                    <h4>自由メモ</h4>
+                    <p>気になることをメモ</p>
+                </div>
+                <div class="health-item">
+                    <span class="h-icon">📸</span>
+                    <h4>写真添付</h4>
+                    <p>餌やり記録に写真を追加</p>
                 </div>
             </div>
         </div>
@@ -96,23 +137,23 @@
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-q">何匹まで登録できますか？</div>
-                    <div class="faq-a">複数のペットを登録して管理できます。ペットを切り替えながら個別に食事を記録することができます。</div>
+                    <div class="faq-a">頭数の制限はありません。犬・猫・その他のペットを何匹でも登録でき、ペットごとにすべてのデータが個別に管理されます。</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">食事のリマインダーを設定できますか？</div>
-                    <div class="faq-a">はい、朝・昼・夜など複数の給餌時刻を設定できます。iPhoneの通知設定がオンになっている必要があります。</div>
+                    <div class="faq-q">データはどこに保存されますか？</div>
+                    <div class="faq-a">すべてのデータはお使いのデバイス内にのみ保存されます。外部サーバーへの送信は行いません。</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">フードの種類をカスタムで追加できますか？</div>
-                    <div class="faq-a">はい、フード名・メーカー・カロリー情報などをカスタムで登録できます。登録したフードは記録時にかんたんに選択できます。</div>
+                    <div class="faq-q">写真はどのくらい保存できますか？</div>
+                    <div class="faq-a">写真はデバイスのストレージに保存されます。保存容量はお使いのデバイスのストレージ容量に依存します。</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">記録データを獣医師に共有できますか？</div>
-                    <div class="faq-a">エクスポート機能でデータをPDF・CSV形式で書き出し、メールなどで共有できます。定期健診の際にご活用ください。</div>
+                    <div class="faq-q">通知のタイミングは変更できますか？</div>
+                    <div class="faq-a">餌やりリマインダーは朝7時と夜6時に送信されます。通知のオン/オフはアプリの設定から変更できます。</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">データのバックアップはできますか？</div>
-                    <div class="faq-a">設定画面からデータのエクスポートが可能です。機種変更時はエクスポートしたデータをインポートして引き継いでください。</div>
+                    <div class="faq-a">設定画面からCSV形式でデータをエクスポートできます。エクスポートしたCSVをメールやクラウドストレージに保存することをお勧めします。</div>
                 </div>
             </div>
         </div>
@@ -128,7 +169,7 @@
                 <a href="privacy.html">プライバシーポリシー</a>
                 <a href="terms.html">利用規約</a>
             </div>
-            <p>© 2026 Pakulog. All rights reserved.</p>
+            <p>© 2026 Project D. All rights reserved.</p>
         </div>
     </div>
 </body>
