@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー | Hareka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:        #24657e;
+      --primary-light:  #d8eaf0;
+      --surface:        #f6fafb;
+      --on-surface:     #1a2e35;
+      --muted:          #5a7a85;
+      --border:         #cde0e7;
+      --white:          #ffffff;
+      --green:          #2e6a3c;
+      --green-light:    #d4f0da;
+      --radius-card:    16px;
+      --radius-full:    999px;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--surface);
+      color: var(--on-surface);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ── ヘッダー ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 14px;
+    }
+    .header-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      margin-left: 20px;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--primary); }
+
+    /* ── ヒーロー ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a8fa3 100%);
+      color: var(--white);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* ── サマリーカード ── */
+    .summary-grid {
+      max-width: 760px;
+      margin: -28px auto 0;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      position: relative;
+      z-index: 10;
+    }
+    .summary-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 18px 14px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(36,101,126,0.08);
+    }
+    .summary-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .summary-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .summary-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── コンテンツ ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    /* 更新日バー */
+    .updated-bar {
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    /* セクション */
+    section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    section h2 .num {
+      background: var(--primary);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    section p {
+      color: var(--on-surface);
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    section p:last-child { margin-bottom: 0; }
+    section ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    section ul li {
+      font-size: 14px;
+      color: var(--on-surface);
+      margin-bottom: 6px;
+    }
+
+    /* データテーブル */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+    .data-table th {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      padding: 10px 14px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--on-surface);
+    }
+    .data-table tr:nth-child(even) td {
+      background: var(--surface);
+    }
+
+    /* ハイライトボックス */
+    .highlight-box {
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .highlight-box.green {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    /* ── フッター ── */
+    footer {
+      background: var(--on-surface);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+    footer .footer-links {
+      margin-bottom: 14px;
+    }
+    footer .footer-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--white); }
+    footer .app-name {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1          { font-size: 22px; }
+      .summary-grid     { grid-template-columns: 1fr; }
+      section           { padding: 20px 18px; }
+      .header-nav a     { margin-left: 12px; }
+      .data-table       { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon">☁</div>
+      Hareka
+    </a>
+    <nav class="header-nav">
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-badge">PRIVACY POLICY</div>
+  <h1>プライバシーポリシー</h1>
+  <p>Harekaはあなたのデータを大切に守ります</p>
+</div>
+
+<!-- サマリーカード -->
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="summary-icon">🔒</div>
+    <div class="summary-title">iCloudのみに保存</div>
+    <div class="summary-desc">データは当社サーバーへ送信しません</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-icon">🚫</div>
+    <div class="summary-title">販売・共有なし</div>
+    <div class="summary-desc">感情データを第三者に提供しません</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-icon">🗑️</div>
+    <div class="summary-title">いつでも削除</div>
+    <div class="summary-desc">設定画面から全データを削除できます</div>
+  </div>
+</div>
+
+<!-- メインコンテンツ -->
+<main>
+
+  <div class="updated-bar">最終更新日：2025年5月17日　　施行日：2025年5月17日</div>
+
+  <section>
+    <h2><span class="num">1</span>基本方針</h2>
+    <p>Hareka（以下「当アプリ」）は、利用者のプライバシーを最大限に尊重します。本プライバシーポリシーは、当アプリがどのような情報を取り扱い、どのように保護するかを説明するものです。</p>
+    <div class="highlight-box green">✅ 私たちの約束：感情データを外部に販売しません。広告に使いません。あなたの記録はあなただけのものです。</div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>収集する情報</h2>
+    <p>当アプリが収集する情報は以下のとおりです。</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>情報の種類</th>
+          <th>具体的な内容</th>
+          <th>用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>気分記録データ</td>
+          <td>天気種別、エネルギーレベル、体調レベル、メモ、記録日時</td>
+          <td>トレンド表示・ケアコンテンツの提案</td>
+        </tr>
+        <tr>
+          <td>プロフィール情報</td>
+          <td>表示名、アバタータイプ、Premiumステータス</td>
+          <td>アプリ内表示</td>
+        </tr>
+        <tr>
+          <td>利用開始理由</td>
+          <td>オンボーディングで選択した理由（任意）</td>
+          <td>AIメッセージのパーソナライズ</td>
+        </tr>
+        <tr>
+          <td>購入情報</td>
+          <td>Premiumプランの購入状況・有効期限</td>
+          <td>Premium機能の提供</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 12px; font-size: 13px; color: var(--muted);">※ 氏名・メールアドレス・位置情報・生体情報は収集しません。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>データの保管場所</h2>
+    <p>当アプリのすべてのデータは <strong>Apple CloudKit（iCloud）</strong> に保管されます。</p>
+    <ul>
+      <li>当社独自のサーバーへのデータ送信は行いません</li>
+      <li>データの保管・管理はAppleのセキュリティポリシーに準拠します</li>
+      <li>iCloudのデータはAppleの暗号化技術で保護されています</li>
+    </ul>
+    <div class="highlight-box">📎 Apple CloudKitのプライバシーポリシー：<a href="https://www.apple.com/jp/legal/privacy/" style="color: var(--primary);">apple.com/jp/legal/privacy/</a></div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>AIサービスの利用について</h2>
+    <p>Harekaは日々のメッセージ生成にAI技術を使用する場合があります（Phase 2以降）。AIサービス利用時の情報の扱いは以下のとおりです。</p>
+    <ul>
+      <li>AIに送信するのは「天気種別」「時間帯」「利用理由」のみです</li>
+      <li>メモの内容・個人を特定できる情報は一切送信しません</li>
+      <li>AIへのリクエストは匿名化されます</li>
+      <li>AIのレスポンスはiCloud上にのみ保存されます</li>
+    </ul>
+    <p>Phase 1（現行）ではAI APIは使用せず、ルールベースの処理のみです。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>第三者への情報提供</h2>
+    <p>当アプリは、以下の場合を除き、利用者の情報を第三者に提供・販売・共有しません。</p>
+    <ul>
+      <li>利用者本人の同意がある場合</li>
+      <li>法令に基づき開示が必要な場合</li>
+      <li>人の生命・身体・財産の保護のために必要な場合</li>
+    </ul>
+    <div class="highlight-box green">✅ 広告目的での情報利用・第三者への販売は行いません。</div>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>購入情報の取り扱い</h2>
+    <p>Premiumプランの決済はすべて <strong>Apple App Store</strong> を通じて行われます。クレジットカード情報等の決済情報は当アプリでは一切取り扱いません。購入に関するプライバシーはAppleの規約に従います。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>利用者の権利</h2>
+    <p>利用者はいつでも以下の操作を行うことができます。</p>
+    <ul>
+      <li><strong>記録の閲覧・修正：</strong>アプリ内のLog画面から行えます</li>
+      <li><strong>記録の削除：</strong>個別ログの削除または設定画面からの全件削除</li>
+      <li><strong>データのエクスポート：</strong>設定画面からCSV形式でエクスポート可能</li>
+      <li><strong>アカウントの削除：</strong>iCloudのHarekaデータを削除することでアカウントは実質的に削除されます</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">8</span>分析・クラッシュレポート</h2>
+    <p>当アプリはApple標準のクラッシュレポート機能を使用しています。クラッシュレポートには個人を特定できる情報は含まれません。端末のiOS設定「プライバシー」→「解析と改善」からオフにすることができます。</p>
+    <p>Google Analyticsなどサードパーティの解析ツールは使用していません。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">9</span>子どものプライバシー</h2>
+    <p>本アプリは13歳未満の方を対象としておりません。13歳未満の方の情報を意図して収集することはありません。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて改定します。重要な変更がある場合は、アプリ内またはこのページにてお知らせします。変更後も引き続き本アプリを使用された場合、変更後のポリシーに同意したものとみなします。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span>お問い合わせ</h2>
+    <p>本ポリシーに関するご質問・ご要望は、以下よりお問い合わせください。</p>
+    <div class="highlight-box">📧 プライバシーに関するお問い合わせ：<a href="https://hareka.jp/contact" style="color: var(--primary);">https://hareka.jp/contact</a></div>
+    <p style="margin-top: 12px; font-size: 13px; color: var(--muted);">通常3営業日以内にご返答いたします。</p>
+  </section>
+
+</main>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-links">
+    <a href="terms.html">利用規約</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </div>
+  <span class="app-name">Hareka</span>
+  <p>あなたの心に、晴れ間を届ける。</p>
+  <p style="margin-top: 10px;">© 2025 Hareka. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

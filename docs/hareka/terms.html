@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>利用規約 | Hareka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:        #24657e;
+      --primary-light:  #d8eaf0;
+      --surface:        #f6fafb;
+      --on-surface:     #1a2e35;
+      --muted:          #5a7a85;
+      --border:         #cde0e7;
+      --white:          #ffffff;
+      --radius-card:    16px;
+      --radius-full:    999px;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--surface);
+      color: var(--on-surface);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ── ヘッダー ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 14px;
+    }
+    .header-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      margin-left: 20px;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--primary); }
+
+    /* ── ヒーロー ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a8fa3 100%);
+      color: var(--white);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* ── コンテンツ ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* 更新日バー */
+    .updated-bar {
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    /* セクション */
+    section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    section h2 .num {
+      background: var(--primary);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    section p {
+      color: var(--on-surface);
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    section p:last-child { margin-bottom: 0; }
+    section ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    section ul li {
+      font-size: 14px;
+      color: var(--on-surface);
+      margin-bottom: 6px;
+    }
+
+    /* 強調ボックス */
+    .highlight-box {
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* ── フッター ── */
+    footer {
+      background: var(--on-surface);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+    footer .footer-links {
+      margin-bottom: 14px;
+    }
+    footer .footer-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--white); }
+    footer .app-name {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1  { font-size: 22px; }
+      section   { padding: 20px 18px; }
+      .header-nav a { margin-left: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon">☁</div>
+      Hareka
+    </a>
+    <nav class="header-nav">
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-badge">TERMS OF SERVICE</div>
+  <h1>利用規約</h1>
+  <p>Harekaアプリをご利用いただく前にお読みください</p>
+</div>
+
+<!-- メインコンテンツ -->
+<main>
+
+  <div class="updated-bar">最終更新日：2025年5月17日</div>
+
+  <section>
+    <h2><span class="num">1</span>はじめに</h2>
+    <p>本利用規約（以下「本規約」）は、「Hareka」（以下「本アプリ」）を利用するすべてのユーザー（以下「利用者」）に適用されます。</p>
+    <p>本アプリをダウンロード・インストール・使用した時点で、本規約に同意したものとみなします。同意いただけない場合は、本アプリの使用をお控えください。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>サービスの内容</h2>
+    <p>Harekaは、日々の気分を「天気」で記録し、メンタルウェルネスをサポートするiOSアプリケーションです。主な機能は以下のとおりです。</p>
+    <ul>
+      <li>気分・体調の記録（天気アイコン・スライダー・メモ）</li>
+      <li>AIによる日々のメッセージ配信</li>
+      <li>セルフケアコンテンツの提供</li>
+      <li>気分トレンドの分析・可視化</li>
+      <li>Premiumプランによる拡張機能</li>
+    </ul>
+    <div class="highlight-box">⚠️ 本アプリは医療機器ではありません。医療的な診断・治療を代替するものではなく、あくまで日常的なウェルネスサポートを目的としています。</div>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>アカウントとデータ</h2>
+    <p>本アプリはApple ID（Sign in with Apple）を用いた認証と、Apple CloudKitを使用したデータ保管を行います。</p>
+    <ul>
+      <li>記録データはAppleのiCloudサービスに保存されます</li>
+      <li>当社は利用者のデータを第三者に販売・提供しません</li>
+      <li>端末の紛失・iCloudアカウントの変更によるデータ損失について、当社は責任を負いません</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>Premiumプランと課金</h2>
+    <p>本アプリには無料プランとPremiumプランがあります。</p>
+    <ul>
+      <li><strong>月額プラン：</strong>¥480 / 月（税込）</li>
+      <li><strong>年額プラン：</strong>¥3,840 / 年（税込）</li>
+    </ul>
+    <p>課金はApp Store（Apple）を通じて行われます。サブスクリプションは有効期限の24時間前に自動更新されます。解約はiOS設定アプリ →「Apple ID」→「サブスクリプション」から行えます。</p>
+    <div class="highlight-box">基本機能は永久に無料です。突然の機能削除や強制有料化は行いません。</div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>禁止事項</h2>
+    <p>利用者は以下の行為を行ってはなりません。</p>
+    <ul>
+      <li>本アプリのリバースエンジニアリング・改ざん</li>
+      <li>他の利用者への迷惑行為</li>
+      <li>本アプリを利用した不正な商業活動</li>
+      <li>虚偽の情報の登録</li>
+      <li>法令または公序良俗に反する行為</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>免責事項</h2>
+    <p>当社は以下について責任を負いません。</p>
+    <ul>
+      <li>本アプリの使用・不使用により生じた損害</li>
+      <li>サービスの一時停止・終了による損害</li>
+      <li>通信障害・システム障害による損失</li>
+      <li>本アプリのコンテンツの正確性・完全性</li>
+    </ul>
+    <p>本アプリはメンタルウェルネスのサポートツールです。精神的・身体的な問題には必ず専門家にご相談ください。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>サービスの変更・終了</h2>
+    <p>当社は、必要と判断した場合にサービス内容を変更・終了することがあります。重要な変更がある場合は、アプリ内通知またはウェブサイトにて事前にお知らせします。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">8</span>規約の変更</h2>
+    <p>本規約は必要に応じて改定します。改定後も本アプリを継続して使用された場合、改定後の規約に同意したものとみなします。最終更新日を必ずご確認ください。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">9</span>準拠法・管轄</h2>
+    <p>本規約は日本法に準拠します。本アプリに関して生じた紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>お問い合わせ</h2>
+    <p>本規約に関するご不明点は、以下よりお問い合わせください。</p>
+    <div class="highlight-box">📧 サポート：<a href="https://hareka.jp/contact" style="color: var(--primary);">https://hareka.jp/contact</a></div>
+  </section>
+
+</main>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-links">
+    <a href="terms.html">利用規約</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </div>
+  <span class="app-name">Hareka</span>
+  <p>あなたの心に、晴れ間を届ける。</p>
+  <p style="margin-top: 10px;">© 2025 Hareka. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
