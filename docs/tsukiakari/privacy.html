@@ -3,98 +3,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>プライバシーポリシー — 月あかり</title>
+  <title>Privacy Policy / プライバシーポリシー — 月あかり Tsukiakari</title>
   <style>
-    body {
-      font-family: -apple-system, "Hiragino Sans", sans-serif;
-      background: #0a0015;
-      color: #e8e0d0;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-      line-height: 1.8;
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #f2de99;
+      --text: rgba(232,224,208,0.85);
+      --text-dim: rgba(232,224,208,0.45);
+      --border: rgba(201,168,76,0.2);
     }
-    h1 { color: #f2de99; font-weight: 300; font-size: 1.6rem; border-bottom: 1px solid #2a1a40; padding-bottom: 16px; }
-    h2 { color: #c9a84c; font-weight: 400; font-size: 1.05rem; margin-top: 2em; }
-    p, li { color: rgba(232,224,208,0.75); font-size: 0.95rem; }
-    ul { padding-left: 1.4em; }
-    a { color: #c9a84c; }
-    .updated { color: rgba(232,224,208,0.4); font-size: 0.85rem; margin-top: 60px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: #0a0015;
+      color: var(--text);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 100px;
+      line-height: 1.85;
+    }
+    header { text-align: center; margin-bottom: 48px; }
+    header .moon { font-size: 3rem; display: block; margin-bottom: 12px; }
+    header h1 { color: var(--gold-light); font-weight: 300; font-size: 1.5rem; letter-spacing: 0.04em; }
+    header p { color: var(--text-dim); font-size: 0.9rem; margin-top: 6px; }
+
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .lang-toggle button {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      border-radius: 20px;
+      padding: 6px 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .lang-toggle button.active {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .section {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      margin-top: 28px;
+    }
+    h2 { color: var(--gold); font-weight: 400; font-size: 1rem; margin-bottom: 12px; }
+    p { font-size: 0.95rem; margin-bottom: 10px; }
+    ul { padding-left: 1.4em; margin-bottom: 10px; }
+    li { font-size: 0.95rem; margin-bottom: 6px; }
+    strong { color: var(--gold-light); font-weight: 500; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .updated { color: var(--text-dim); font-size: 0.82rem; margin-top: 64px; text-align: center; }
+
+    /* Language switching */
+    [data-lang="en"] { display: none; }
+    body.en [data-lang="ja"] { display: none; }
+    body.en [data-lang="en"] { display: block; }
+
+    nav { text-align: center; margin-bottom: 32px; font-size: 0.88rem; }
+    nav a { color: var(--text-dim); margin: 0 12px; }
+    nav a:hover { color: var(--gold); }
   </style>
 </head>
 <body>
 
-<h1>🌙 月あかり — プライバシーポリシー</h1>
+<header>
+  <span class="moon">🌕</span>
+  <h1>月あかり &nbsp;·&nbsp; Tsukiakari</h1>
+  <p data-lang="ja">プライバシーポリシー</p>
+  <p data-lang="en">Privacy Policy</p>
+</header>
 
-<p>
-  「月あかり」（以下、本アプリ）は、ryam244（以下、開発者）が提供する
-  iOS アプリケーションです。本ポリシーは、本アプリにおける個人情報の
-  取り扱いについて説明します。
-</p>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+</nav>
 
-<h2>1. 収集する情報</h2>
-<p>本アプリが取得・利用する情報は以下の通りです。</p>
-<ul>
-  <li>
-    <strong>位置情報（任意）</strong>：月の出・月の入り時刻の計算に使用します。
-    取得した位置情報は端末内でのみ処理され、開発者を含む第三者には
-    一切送信されません。位置情報の許可は任意であり、拒否した場合は
-    東京（35.68°N, 139.77°E）を既定値として使用します。
-  </li>
-  <li>
-    <strong>アプリ内設定データ</strong>：お名前・手動設定した地点情報などは
-    端末の <em>UserDefaults</em> にのみ保存されます。
-    外部サーバーへの送信は行いません。
-  </li>
-</ul>
+<div class="lang-toggle">
+  <button class="active" onclick="setLang('ja')">日本語</button>
+  <button onclick="setLang('en')">English</button>
+</div>
 
-<h2>2. 収集しない情報</h2>
-<ul>
-  <li>氏名・メールアドレスなどの個人識別情報</li>
-  <li>健康情報・金融情報</li>
-  <li>利用履歴・行動ログ</li>
-  <li>広告識別子（IDFA）</li>
-</ul>
+<!-- ==================== JAPANESE ==================== -->
+<div data-lang="ja">
 
-<h2>3. 第三者提供</h2>
-<p>
-  本アプリは外部 API・外部サーバーと通信を行わず、収集した情報を
-  第三者に提供・販売することは一切ありません。
-</p>
+<p>「月あかり」（以下、本アプリ）は ryam244（以下、開発者）が提供する iOS アプリケーションです。本ポリシーは、本アプリにおける個人情報の取り扱いについて説明します。</p>
 
-<h2>4. 広告・アナリティクス</h2>
-<p>
-  本アプリは広告表示およびアナリティクス SDK を使用していません。
-</p>
+<div class="section">
+  <h2>1. 収集する情報</h2>
+  <ul>
+    <li><strong>位置情報（任意）</strong>：月の出・月の入り時刻の計算のみに使用します。取得した位置情報は端末内でのみ処理され、開発者を含む第三者には一切送信されません。位置情報を拒否した場合は、東京（35.68°N, 139.77°E）を既定値として計算します。</li>
+    <li><strong>アプリ内設定データ</strong>：お名前・手動設定した地点情報などは端末の UserDefaults にのみ保存されます。外部サーバーへの送信は行いません。</li>
+  </ul>
+</div>
 
-<h2>5. 免責事項</h2>
-<p>
-  本アプリが表示する月相・旧暦・二十四節気などの情報は、
-  天文計算に基づく自然現象の記録です。
-  占い・医療・健康アドバイスを提供するものではありません。
-  計算値は参考情報であり、専門機関のデータと若干異なる場合があります。
-</p>
+<div class="section">
+  <h2>2. 収集しない情報</h2>
+  <ul>
+    <li>氏名・メールアドレスなどの個人識別情報</li>
+    <li>健康情報・金融情報</li>
+    <li>利用履歴・行動ログ・クラッシュレポート</li>
+    <li>広告識別子（IDFA）</li>
+  </ul>
+</div>
 
-<h2>6. 子どものプライバシー</h2>
-<p>
-  本アプリは 4 歳以上を対象としており、13 歳未満の子どもから
-  意図的に個人情報を収集することはありません。
-</p>
+<div class="section">
+  <h2>3. 第三者提供</h2>
+  <p>本アプリは外部 API・外部サーバーと通信を行いません。収集した情報を第三者に提供・販売することは一切ありません。</p>
+</div>
 
-<h2>7. ポリシーの変更</h2>
-<p>
-  本ポリシーは予告なく変更される場合があります。
-  変更後のポリシーはこのページに掲載した時点で効力を生じます。
-</p>
+<div class="section">
+  <h2>4. 広告・アナリティクス</h2>
+  <p>本アプリは広告表示およびアナリティクス SDK を使用していません。</p>
+</div>
 
-<h2>8. お問い合わせ</h2>
-<p>
-  本ポリシーに関するご質問は、GitHub のリポジトリ
-  <a href="https://github.com/ryam244/20260507/issues">Issues</a>
-  よりお問い合わせください。
-</p>
+<div class="section">
+  <h2>5. 免責事項</h2>
+  <p>本アプリが表示する月相・旧暦・二十四節気などの情報は、天文計算に基づく自然現象の記録です。占い・医療・健康アドバイスを提供するものではありません。計算値は参考情報であり、専門機関のデータと若干異なる場合があります。</p>
+</div>
 
-<p class="updated">最終更新：2026年5月</p>
+<div class="section">
+  <h2>6. 子どものプライバシー</h2>
+  <p>本アプリは 4 歳以上を対象としており、13 歳未満の子どもから意図的に個人情報を収集することはありません。</p>
+</div>
 
+<div class="section">
+  <h2>7. ポリシーの変更</h2>
+  <p>本ポリシーは予告なく変更される場合があります。変更後のポリシーはこのページに掲載した時点で効力を生じます。</p>
+</div>
+
+<div class="section">
+  <h2>8. お問い合わせ</h2>
+  <p>本ポリシーに関するご質問は <a href="https://github.com/ryam244/20260507/issues">GitHub Issues</a> よりお問い合わせください。</p>
+</div>
+
+</div><!-- /ja -->
+
+<!-- ==================== ENGLISH ==================== -->
+<div data-lang="en">
+
+<p>"Tsukiakari" (hereinafter "the App") is an iOS application developed by ryam244 (hereinafter "Developer"). This policy explains how the App handles your information.</p>
+
+<div class="section">
+  <h2>1. Information We Collect</h2>
+  <ul>
+    <li><strong>Location (optional)</strong>: Used solely to calculate moonrise and moonset times for your location. Location data is processed entirely on your device and is never transmitted to any server. If you decline, Tokyo (35.68°N, 139.77°E) is used as default.</li>
+    <li><strong>In-app preferences</strong>: Your name and manually entered location are stored only in the device's local UserDefaults. Nothing is sent to external servers.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>2. Information We Do Not Collect</h2>
+  <ul>
+    <li>Personal identifiers (name, email, etc.)</li>
+    <li>Health or financial data</li>
+    <li>Usage history, behavior logs, or crash reports</li>
+    <li>Advertising identifiers (IDFA)</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>3. Third-Party Sharing</h2>
+  <p>The App does not communicate with any external API or server. We never share or sell any data to third parties.</p>
+</div>
+
+<div class="section">
+  <h2>4. Advertising &amp; Analytics</h2>
+  <p>The App contains no advertisements and no analytics SDKs.</p>
+</div>
+
+<div class="section">
+  <h2>5. Disclaimer</h2>
+  <p>Moon phase, lunar calendar, and seasonal data displayed by the App are astronomical calculations for reference purposes only. They are not fortune-telling, medical, or health advice. Calculated values may differ slightly from official sources.</p>
+</div>
+
+<div class="section">
+  <h2>6. Children's Privacy</h2>
+  <p>The App is rated 4+ and is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
+</div>
+
+<div class="section">
+  <h2>7. Changes to This Policy</h2>
+  <p>We may update this policy without prior notice. Changes take effect when posted on this page.</p>
+</div>
+
+<div class="section">
+  <h2>8. Contact</h2>
+  <p>For questions about this policy, please open an issue at <a href="https://github.com/ryam244/20260507/issues">GitHub Issues</a>.</p>
+</div>
+
+</div><!-- /en -->
+
+<p class="updated">Last updated: May 2026 &nbsp;·&nbsp; 最終更新：2026年5月</p>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang === 'en' ? 'en' : '';
+    document.querySelectorAll('.lang-toggle button').forEach((btn, i) => {
+      btn.classList.toggle('active', (lang === 'ja' && i === 0) || (lang === 'en' && i === 1));
+    });
+    document.documentElement.lang = lang;
+  }
+  // Auto-detect browser language
+  if (navigator.language && navigator.language.startsWith('ja') === false) {
+    setLang('en');
+  }
+</script>
 </body>
 </html>

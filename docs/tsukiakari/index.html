@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>月あかり — Tsukiakari Moon App</title>
+  <meta name="description" content="月あかり — 旧暦・二十四節気・月相を美しいUIで。Japanese lunar calendar and moon phase iOS app.">
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #f2de99;
+      --text: rgba(232,224,208,0.85);
+      --text-dim: rgba(232,224,208,0.45);
+      --purple: #1a0533;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: #0a0015;
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* Stars background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 15%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 45% 30%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 45%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 85%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 90%, rgba(255,255,255,0.5) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .lang-toggle {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      display: flex;
+      gap: 6px;
+      z-index: 100;
+    }
+    .lang-toggle button {
+      background: rgba(10,0,21,0.8);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--text-dim);
+      border-radius: 16px;
+      padding: 5px 14px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .lang-toggle button.active { border-color: var(--gold); color: var(--gold); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 100px 24px 80px;
+    }
+    .moon-emoji { font-size: 5rem; display: block; margin-bottom: 20px; animation: pulse 4s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { filter: drop-shadow(0 0 24px rgba(201,168,76,0.4)); }
+      50% { filter: drop-shadow(0 0 48px rgba(201,168,76,0.7)); }
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      font-weight: 200;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .hero .subtitle {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--text-dim);
+      margin-bottom: 36px;
+      letter-spacing: 0.04em;
+    }
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #c9a84c, #f2de99);
+      color: #0a0015;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 44px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .cta:hover { opacity: 0.88; transform: scale(1.03); }
+
+    /* Features */
+    .features {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .features h2 {
+      text-align: center;
+      color: var(--gold);
+      font-weight: 300;
+      font-size: 1.3rem;
+      margin-bottom: 48px;
+      letter-spacing: 0.06em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(26,5,51,0.6);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 16px;
+      padding: 28px 24px;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: rgba(201,168,76,0.4); }
+    .card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .card h3 { color: var(--gold-light); font-weight: 400; font-size: 1rem; margin-bottom: 8px; }
+    .card p { color: var(--text-dim); font-size: 0.88rem; }
+
+    /* Screenshots placeholder */
+    .mockup {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 20px 24px 80px;
+    }
+    .phone-frame {
+      display: inline-block;
+      width: 220px;
+      height: 420px;
+      background: linear-gradient(180deg, #1a0533 0%, #0a0015 100%);
+      border-radius: 40px;
+      border: 2px solid rgba(201,168,76,0.3);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(201,168,76,0.15);
+    }
+    .phone-frame .moon-display {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      font-size: 5rem;
+    }
+    .phone-frame .label {
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      text-align: center;
+      color: var(--gold-light);
+      font-size: 1.1rem;
+      font-weight: 200;
+      letter-spacing: 0.1em;
+    }
+    .phone-frame .sub {
+      position: absolute;
+      bottom: 58px;
+      width: 100%;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(201,168,76,0.12);
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; margin: 0 10px; }
+    footer a:hover { text-decoration: underline; }
+
+    [data-lang="en"] { display: none; }
+    body.en [data-lang="ja"] { display: none; }
+    body.en [data-lang="en"] { display: block; }
+    /* Inline spans need inline display */
+    body.en span[data-lang="en"],
+    span[data-lang="ja"] { display: inline; }
+    body.en span[data-lang="ja"] { display: none; }
+    body:not(.en) span[data-lang="en"] { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="active" onclick="setLang('ja')">日本語</button>
+  <button onclick="setLang('en')">English</button>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <span class="moon-emoji">🌕</span>
+  <h1>月あかり</h1>
+  <p class="subtitle">
+    <span data-lang="ja">旧暦・二十四節気・月相を美しいUIで</span>
+    <span data-lang="en">Japanese Lunar Calendar &amp; Moon Phases · Beautiful Dark UI</span>
+  </p>
+  <a href="#" class="cta" id="app-store-link">
+    <span data-lang="ja">App Store で入手</span>
+    <span data-lang="en">Download on the App Store</span>
+  </a>
+</section>
+
+<!-- Phone mockup -->
+<section class="mockup">
+  <div class="phone-frame">
+    <div class="moon-display">🌕</div>
+    <div class="label">望月</div>
+    <div class="sub">
+      <span data-lang="ja">月齢 15.0 · 輝面比 100%</span>
+      <span data-lang="en">Age 15.0 · Illumination 100%</span>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+  <h2 data-lang="ja">特徴</h2>
+  <h2 data-lang="en">Features</h2>
+
+  <div class="grid">
+    <div class="card" data-lang="ja">
+      <div class="icon">🌙</div>
+      <h3>月の和名</h3>
+      <p>三日月・十三夜・望月・十六夜・立待月…月齢から今夜の月の和名を表示します。</p>
+    </div>
+    <div class="card" data-lang="ja">
+      <div class="icon">📅</div>
+      <h3>旧暦・和風月名</h3>
+      <p>令和の旧暦日付、睦月〜師走の和風月名を毎日表示。二十四節気・七十二候も確認できます。</p>
+    </div>
+    <div class="card" data-lang="ja">
+      <div class="icon">⭐</div>
+      <h3>月のリズム</h3>
+      <p>新月・上弦・満月・下弦に合わせた、日本の暦文化に基づく行動提案をお届けします。</p>
+    </div>
+    <div class="card" data-lang="ja">
+      <div class="icon">🎂</div>
+      <h3>誕生日の月相</h3>
+      <p>あなたが生まれた夜の月相を調べてシェアカードを生成。SNSで家族・友人と共有できます。</p>
+    </div>
+    <div class="card" data-lang="ja">
+      <div class="icon">📱</div>
+      <h3>ウィジェット</h3>
+      <p>ホーム画面に月齢・旧暦日付・節気を表示。StandBy モードにも対応しています。</p>
+    </div>
+    <div class="card" data-lang="ja">
+      <div class="icon">🔕</div>
+      <h3>完全オフライン</h3>
+      <p>外部 API ゼロ。山でも海でも、通信なしで動作します。</p>
+    </div>
+
+    <!-- English cards -->
+    <div class="card" data-lang="en">
+      <div class="icon">🌙</div>
+      <h3>Traditional Moon Names</h3>
+      <p>Discover tonight's moon by its poetic Japanese name — Mikazuki, Jūsan-ya, Mochizuki, Izayoi, Tachimachi-zuki and more.</p>
+    </div>
+    <div class="card" data-lang="en">
+      <div class="icon">📅</div>
+      <h3>Lunar Calendar</h3>
+      <p>Full Japanese lunar date in the Reiwa era, traditional month names (Mutsuki–Shiwasu), 24 solar terms, and 72 micro-seasons.</p>
+    </div>
+    <div class="card" data-lang="en">
+      <div class="icon">⭐</div>
+      <h3>Moon Rhythm</h3>
+      <p>Lifestyle suggestions rooted in Japanese calendar tradition — tuned to new moon, first quarter, full moon, and last quarter.</p>
+    </div>
+    <div class="card" data-lang="en">
+      <div class="icon">🎂</div>
+      <h3>Birthday Moon Phase</h3>
+      <p>Look up the moon phase on any birthday and generate a shareable card — perfect for social media.</p>
+    </div>
+    <div class="card" data-lang="en">
+      <div class="icon">📱</div>
+      <h3>Widgets &amp; StandBy</h3>
+      <p>See moon age, lunar date, and seasonal term on your home screen. StandBy mode shows a full moon display while charging.</p>
+    </div>
+    <div class="card" data-lang="en">
+      <div class="icon">🔕</div>
+      <h3>100% Offline</h3>
+      <p>Zero external APIs. Everything is calculated on-device — mountains, beaches, anywhere without signal.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 ryam244 &nbsp;·&nbsp;
+    <a href="privacy.html" data-lang="ja">プライバシーポリシー</a>
+    <a href="privacy.html" data-lang="en">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="terms.html" data-lang="ja">利用規約</a>
+    <a href="terms.html" data-lang="en">Terms of Use</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/ryam244/20260507">GitHub</a>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang === 'en' ? 'en' : '';
+    document.querySelectorAll('.lang-toggle button').forEach((btn, i) => {
+      btn.classList.toggle('active', (lang === 'ja' && i === 0) || (lang === 'en' && i === 1));
+    });
+    document.documentElement.lang = lang;
+  }
+  if (navigator.language && navigator.language.startsWith('ja') === false) {
+    setLang('en');
+  }
+</script>
+</body>
+</html>
