@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GiftMoments — 贈り物をもっと丁寧に</title>
+  <meta name="description" content="GiftMomentsは、贈り物をもっと丁寧に管理するためのiOSアプリです。カレンダー管理・AI ギフト提案・お返し通知・ウィッシュリスト・贈答台帳を一つに。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:       #8e171c;
+      --primary-light: #b01e24;
+      --primary-dark:  #6b1115;
+      --bg:            #f5f2ed;
+      --bg-white:      #ffffff;
+      --text:          #1b1c1a;
+      --text-muted:    #5a5a58;
+      --border:        #e0dbd3;
+      --radius:        10px;
+      --shadow:        0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+                   'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--primary); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1.5rem 4.5rem;
+    }
+    .hero-icon {
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 24px;
+      margin: 0 auto 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 5vw, 2.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 .tagline {
+      display: block;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      font-weight: 400;
+      opacity: 0.88;
+      margin-top: 0.5rem;
+      letter-spacing: 0.06em;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      max-width: 520px;
+      margin: 1.5rem auto 2.75rem;
+      line-height: 1.85;
+    }
+    .btn-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50px;
+      padding: 0.85rem 2.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: not-allowed;
+      opacity: 0.82;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .btn-store .badge {
+      background: rgba(255,255,255,0.28);
+      border-radius: 20px;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.65rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* ── FEATURES ── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem 4rem;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 0.95rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+    .feature-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.85rem 1.6rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+    }
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.85rem;
+      line-height: 1;
+    }
+    .feature-card h3 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.45rem;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── POLICY LINKS ── */
+    .policy-links {
+      background: var(--bg-white);
+      border-top: 1px solid var(--border);
+    }
+    .policy-links-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.75rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .policy-link-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 2rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .policy-link-card:hover {
+      background: #ede8e1;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: var(--bg-white);
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--primary); }
+    .footer-links { margin-top: 0.4rem; }
+    .footer-links a + a::before { content: " · "; }
+
+    @media (max-width: 600px) {
+      .header-inner { height: 54px; }
+      nav a { margin-left: 1rem; font-size: 0.85rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero { padding: 3.5rem 1rem 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="/20260524/">🎁 GiftMoments</a>
+    <nav>
+      <a href="/20260524/privacy.html">プライバシー</a>
+      <a href="/20260524/terms.html">利用規約</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-icon">🎁</div>
+    <h1>
+      GiftMoments
+      <span class="tagline">贈り物をもっと丁寧に</span>
+    </h1>
+    <p>大切な人への贈り物を、いつも心を込めて。<br>
+       ギフトの記録・管理から、AI によるプレゼント提案まで。<br>
+       贈る喜びを、もっと豊かにする iOS アプリ。</p>
+    <span class="btn-store" aria-disabled="true">
+      App Store でダウンロード
+      <span class="badge">近日公開</span>
+    </span>
+  </section>
+
+  <!-- ── Features ── -->
+  <div class="section">
+    <h2 class="section-title">主な機能</h2>
+    <p class="section-subtitle">GiftMoments が選ばれる 5 つの理由</p>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>カレンダー管理</h3>
+        <p>誕生日・記念日・お中元・お歳暮など、贈り物に関わるあらゆるイベントをカレンダーで一覧管理。うっかり忘れを防ぎます。</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3>AI ギフト提案</h3>
+        <p>相手の年齢・趣味・予算をもとに、AI が最適なギフトアイデアを提案。楽天市場・Amazon との連携で、そのまま購入も可能です。</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>お返し通知</h3>
+        <p>いただいたギフトへのお返しを忘れないよう、適切なタイミングで通知。冠婚葬祭のマナーにも対応したスマートなサポート。</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎀</div>
+        <h3>ウィッシュリスト</h3>
+        <p>自分が欲しいものをウィッシュリストに登録。家族や友人と共有して、プレゼント選びをもっとスムーズに。</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📒</div>
+        <h3>贈答台帳</h3>
+        <p>贈った・もらった履歴を贈答台帳としてきれいに記録。人間関係ごとにまとめて、感謝のバランスをいつでも把握できます。</p>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ── Policy links ── -->
+<div class="policy-links">
+  <div class="policy-links-inner">
+    <a class="policy-link-card" href="/20260524/privacy.html">
+      🔒 プライバシーポリシー
+    </a>
+    <a class="policy-link-card" href="/20260524/terms.html">
+      📄 利用規約
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 GiftMoments. All rights reserved.</p>
+  <p class="footer-links" style="margin-top:0.35rem;">
+    最終更新日: 2026年5月25日
+  </p>
+</footer>
+
+</body>
+</html>

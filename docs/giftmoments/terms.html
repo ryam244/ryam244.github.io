@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>利用規約 — GiftMoments</title>
+  <meta name="description" content="GiftMomentsの利用規約。サービスの利用条件・課金・免責事項等をご確認ください。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:       #8e171c;
+      --primary-light: #b01e24;
+      --primary-dark:  #6b1115;
+      --bg:            #f5f2ed;
+      --bg-white:      #ffffff;
+      --text:          #1b1c1a;
+      --text-muted:    #5a5a58;
+      --border:        #e0dbd3;
+      --radius:        10px;
+      --shadow:        0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+                   'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--primary); }
+    nav a.active { color: var(--primary); font-weight: 600; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 3.25rem 1.5rem 2.75rem;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    .page-hero p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4.5rem;
+    }
+
+    /* Table of Contents */
+    .toc {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .toc h2 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { font-size: 0.9rem; margin-bottom: 0.35rem; }
+    .toc a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .toc a:hover { color: var(--primary); }
+
+    /* Policy Sections */
+    .policy-section {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 75px;
+    }
+    .policy-section h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .policy-section h2 .num {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .policy-section h3 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.4rem 0 0.55rem;
+      padding-left: 0.75rem;
+      border-left: 3px solid var(--border);
+    }
+    .policy-section p { font-size: 0.94rem; color: var(--text); margin-bottom: 0.8rem; }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section a { color: var(--primary); word-break: break-all; }
+    .policy-section a:hover { text-decoration: underline; }
+    .policy-section ul, .policy-section ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+    .policy-section li { font-size: 0.94rem; margin-bottom: 0.4rem; color: var(--text); }
+    .policy-section li:last-child { margin-bottom: 0; }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+    }
+    .price-table th {
+      background: #fdf3f3;
+      color: var(--primary);
+      font-weight: 700;
+      padding: 0.6rem 1rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .price-table td {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .price-table tr:nth-child(even) td { background: #fafaf9; }
+    .badge-pro {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .affiliate-box {
+      background: #fff8f0;
+      border: 1px solid #f5d9b0;
+      border-left: 4px solid #c8a96e;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      color: #5a3e10;
+      line-height: 1.7;
+    }
+
+    .info-box {
+      background: #f0f5ff;
+      border: 1px solid #c8d8f5;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      color: #1a3a6e;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: var(--bg-white);
+    }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--primary); }
+
+    @media (max-width: 600px) {
+      .header-inner { height: 54px; }
+      nav a { margin-left: 1rem; font-size: 0.85rem; }
+      .policy-section { padding: 1.5rem 1.25rem; }
+      .content-wrap { padding: 2rem 1rem 3.5rem; }
+      .price-table { font-size: 0.85rem; }
+      .price-table th, .price-table td { padding: 0.5rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="/20260524/">🎁 GiftMoments</a>
+    <nav>
+      <a href="/20260524/privacy.html">プライバシー</a>
+      <a href="/20260524/terms.html" class="active">利用規約</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <h1>📋 利用規約</h1>
+  <p>最終更新日: 2026年5月25日</p>
+</div>
+
+<div class="content-wrap">
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#intro">はじめに・適用範囲</a></li>
+      <li><a href="#eligibility">利用資格</a></li>
+      <li><a href="#service">サービスの内容</a></li>
+      <li><a href="#billing">有料プランと課金</a></li>
+      <li><a href="#affiliate">アフィリエイトリンクについて</a></li>
+      <li><a href="#prohibited">禁止事項</a></li>
+      <li><a href="#disclaimer">免責事項</a></li>
+      <li><a href="#ip">知的財産</a></li>
+      <li><a href="#changes">サービスの変更・終了</a></li>
+      <li><a href="#law">準拠法・管轄</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. はじめに -->
+  <div class="policy-section" id="intro">
+    <h2><span class="num">1</span>はじめに・適用範囲</h2>
+    <p>
+      本利用規約（以下「本規約」）は、GiftMoments（以下「本アプリ」）の利用に際して適用されます。
+      本アプリをダウンロード・インストール・使用することで、本規約に同意されたものとみなします。
+    </p>
+    <p>同意いただけない場合は、本アプリをご利用いただくことができません。</p>
+  </div>
+
+  <!-- 2. 利用資格 -->
+  <div class="policy-section" id="eligibility">
+    <h2><span class="num">2</span>利用資格</h2>
+    <ul>
+      <li>iOS 18.0 以上を搭載した iPhone / iPad</li>
+      <li>有効な Apple ID</li>
+      <li>有料機能のご利用には、App Store に登録済みの支払い方法が必要です</li>
+    </ul>
+    <p>本アプリは 13 歳以上の方を対象としています。</p>
+  </div>
+
+  <!-- 3. サービスの内容 -->
+  <div class="policy-section" id="service">
+    <h2><span class="num">3</span>サービスの内容</h2>
+    <p>本アプリは以下の機能を提供します：</p>
+    <h3>Free（無料）機能</h3>
+    <ul>
+      <li>ギフトの記録・管理（無制限）</li>
+      <li>カレンダー表示・月間サマリー</li>
+      <li>誕生日・お返し期限のリマインダー通知</li>
+      <li>相手の管理（最大 30 人）</li>
+      <li>ウィッシュリスト（最大 20 件）</li>
+    </ul>
+    <h3>Pro（有料）限定機能</h3>
+    <ul>
+      <li>相手・ウィッシュリスト無制限</li>
+      <li>iCloud 同期（複数デバイス対応）</li>
+      <li>AI ギフト提案（Apple Intelligence 活用）</li>
+      <li>ホーム画面ウィジェット（3サイズ）</li>
+      <li>支出グラフ・バランス分析</li>
+      <li>贈答台帳 CSV エクスポート</li>
+      <li>お中元・お歳暮季節管理モード</li>
+    </ul>
+  </div>
+
+  <!-- 4. 有料プランと課金 -->
+  <div class="policy-section" id="billing">
+    <h2><span class="num">4</span>有料プランと課金</h2>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>プラン</th>
+          <th>料金</th>
+          <th>備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Free</td>
+          <td>無料</td>
+          <td>一部機能に制限あり</td>
+        </tr>
+        <tr>
+          <td><span class="badge-pro">PRO</span> 月額</td>
+          <td>¥480 / 月</td>
+          <td>いつでもキャンセル可</td>
+        </tr>
+        <tr>
+          <td><span class="badge-pro">PRO</span> 年額</td>
+          <td>¥3,800 / 年</td>
+          <td>約 34% お得・1週間無料トライアル付き</td>
+        </tr>
+        <tr>
+          <td><span class="badge-pro">PRO</span> 買い切り</td>
+          <td>¥9,800（税込）</td>
+          <td>全機能を永久に利用可能</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>課金・支払い</h3>
+    <p>
+      課金処理はすべて Apple App Store を通じて行われます。
+      当社はクレジットカード番号等の決済情報を保持しません。
+    </p>
+
+    <h3>サブスクリプションの解約</h3>
+    <p>
+      サブスクリプション（月額・年額）の解約は、iPhone の「設定」→「Apple ID」→「サブスクリプション」から行ってください。
+      解約後も、現在の課金期間終了まで Pro 機能をご利用いただけます。
+    </p>
+
+    <h3>返金</h3>
+    <p>
+      返金については Apple のポリシーに従います。
+      返金申請は <a href="https://support.apple.com/ja-jp/111870" target="_blank" rel="noopener">Apple サポート</a>
+      からお申し込みください。
+    </p>
+
+    <div class="info-box">
+      💡 無料トライアル期間中に解約した場合、課金は発生しません。トライアル終了前にキャンセルしてください。
+    </div>
+  </div>
+
+  <!-- 5. アフィリエイトリンク -->
+  <div class="policy-section" id="affiliate">
+    <h2><span class="num">5</span>アフィリエイトリンクについて</h2>
+    <p>
+      本アプリの「AI ギフト提案」画面に表示される楽天市場・Amazon.co.jp へのリンクは、
+      各社のアフィリエイトプログラム（楽天アフィリエイト / Amazon Associates）に参加した提携リンクです。
+    </p>
+    <div class="affiliate-box">
+      📢 <strong>アフィリエイト開示：</strong>これらのリンク経由でご購入いただいた場合、
+      GiftMoments 開発者がアフィリエイト報酬を受け取ることがあります。
+      <strong>お客様の購入金額には一切影響しません。</strong>
+    </div>
+    <p style="margin-top: 1rem;">
+      商品の価格・在庫・内容・送料は各サービスの表示に従います。当社はその正確性を保証しません。
+      各リンク先サービスのご利用については、楽天市場・Amazon.co.jp それぞれの利用規約・プライバシーポリシーが適用されます。
+    </p>
+  </div>
+
+  <!-- 6. 禁止事項 -->
+  <div class="policy-section" id="prohibited">
+    <h2><span class="num">6</span>禁止事項</h2>
+    <p>以下の行為を禁止します：</p>
+    <ul>
+      <li>本アプリのリバースエンジニアリング・逆コンパイル・改ざん</li>
+      <li>不正な手段による有料機能へのアクセス</li>
+      <li>本アプリを使用した詐欺・フィッシング等の不正行為</li>
+      <li>他のユーザーや第三者への迷惑行為・名誉毀損</li>
+      <li>法令または公序良俗に反する目的での利用</li>
+    </ul>
+  </div>
+
+  <!-- 7. 免責事項 -->
+  <div class="policy-section" id="disclaimer">
+    <h2><span class="num">7</span>免責事項</h2>
+    <p>
+      本アプリは「現状のまま」提供されます。
+      当社は、法令の定める範囲において、以下について責任を負いません：
+    </p>
+    <ul>
+      <li>端末の故障・データ消失・アプリの不具合による損害</li>
+      <li>通信環境・iOS のアップデートによるサービスの変化</li>
+      <li>アフィリエイトリンク先（楽天・Amazon）での取引に関するトラブル</li>
+      <li>iCloud 同期における Apple 側の障害・データ損失</li>
+    </ul>
+    <p>重要なデータは定期的にバックアップしてください（iCloud を有効にした Pro プランをお勧めします）。</p>
+  </div>
+
+  <!-- 8. 知的財産 -->
+  <div class="policy-section" id="ip">
+    <h2><span class="num">8</span>知的財産</h2>
+    <p>
+      本アプリのデザイン・コード・グラフィック・テキスト等はすべて著作権により保護されています。
+      当社の書面による許可なく、複製・転用・再配布することを禁じます。
+    </p>
+  </div>
+
+  <!-- 9. サービスの変更・終了 -->
+  <div class="policy-section" id="changes">
+    <h2><span class="num">9</span>サービスの変更・終了</h2>
+    <p>
+      当社は予告なく本アプリの機能を変更・追加・削除、またはサービスを終了する場合があります。
+      重要な変更については、可能な限り事前にアプリ内またはこのページでお知らせします。
+    </p>
+    <p>サービスの終了時、Pro 残存期間に対する返金は Apple のポリシーに従います。</p>
+  </div>
+
+  <!-- 10. 準拠法・管轄 -->
+  <div class="policy-section" id="law">
+    <h2><span class="num">10</span>準拠法・管轄</h2>
+    <p>
+      本規約は日本法に準拠して解釈・適用されます。
+      本規約に関して生じた紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
+    </p>
+  </div>
+
+  <!-- 11. お問い合わせ -->
+  <div class="policy-section" id="contact">
+    <h2><span class="num">11</span>お問い合わせ</h2>
+    <p>本規約に関するご質問・ご意見は下記までご連絡ください：</p>
+    <p>
+      <strong>メール：</strong>
+      <a href="mailto:ta06110611@gmail.com">ta06110611@gmail.com</a>
+    </p>
+    <p>お問い合わせには、通常 3〜5 営業日以内にご返答いたします。</p>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<footer>
+  <p>
+    <a href="/20260524/">🎁 GiftMoments</a>
+    &nbsp;·&nbsp;
+    <a href="/20260524/privacy.html">プライバシーポリシー</a>
+    &nbsp;·&nbsp;
+    <a href="/20260524/terms.html">利用規約</a>
+  </p>
+  <p style="margin-top: 0.5rem;">最終更新日: 2026年5月25日 &nbsp;·&nbsp; © 2026 GiftMoments. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
