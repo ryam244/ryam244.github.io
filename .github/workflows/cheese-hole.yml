@@ -1,7 +1,7 @@
 name: Deploy Cheese Hole
 on:
   push:
-    branches: [publish/cheese-hole]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
