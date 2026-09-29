@@ -1,0 +1,408 @@
+/* 焚き火マスター — 公開ページ共通スタイル */
+
+:root {
+  --bg: #0a0d18;
+  --bg-soft: #0d111d;
+  --surface: #12161f;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --text: #f0f0f4;
+  --text-2: #9a9aa6;
+  --text-3: #6d6d79;
+  --accent: #ff7a2e;
+  --accent-2: #ffb840;
+  --measure: 720px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 184, 64, 0.3);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- ヘッダー ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  border: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  color: var(--text);
+}
+
+.brand__mark {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.brand__flame {
+  transform-origin: 50% 90%;
+  animation: flicker 3.2s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  40% { transform: scaleY(1.07) scaleX(0.96); }
+  70% { transform: scaleY(0.97) scaleX(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand__flame { animation: none; }
+}
+
+.site-nav {
+  display: flex;
+  gap: 22px;
+  font-size: 0.82rem;
+  color: var(--text-2);
+}
+
+.site-nav a {
+  color: var(--text-2);
+  border-bottom: none;
+  white-space: nowrap;
+}
+
+/* 狭い画面ではヘッダーを2段にして折り返しを防ぐ */
+@media (max-width: 620px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 20px;
+  }
+
+  .site-nav {
+    gap: 18px;
+    font-size: 0.78rem;
+  }
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+/* ---------- レイアウト ---------- */
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wrap--wide {
+  max-width: 1080px;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 18px;
+}
+
+h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+  margin: 0 0 10px;
+  color: var(--text);
+}
+
+p {
+  margin: 0 0 16px;
+  color: var(--text-2);
+}
+
+.doc-head {
+  padding: 88px 0 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-meta {
+  margin: 20px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+
+.doc-body {
+  padding: 56px 0 40px;
+}
+
+/* 条文セクション */
+
+.article {
+  padding: 0 0 40px;
+}
+
+.article h2 {
+  position: relative;
+  padding-left: 16px;
+}
+
+.article h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 3px;
+  height: 1.05em;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.article p {
+  padding-left: 16px;
+  margin-bottom: 0;
+  white-space: pre-line;
+}
+
+/* 補足カード(多用しない) */
+
+.callout {
+  margin: 8px 0 48px;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: 8px;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-2);
+}
+
+.callout strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ---------- トップページ ---------- */
+
+.hero {
+  padding: 104px 0 88px;
+  text-align: left;
+}
+
+.hero__title {
+  margin-bottom: 22px;
+}
+
+.hero__lead {
+  font-size: 1.05rem;
+  max-width: 34em;
+}
+
+.hero__actions {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn:hover {
+  border-color: var(--text-3);
+  color: var(--text);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #17110a;
+  font-weight: 700;
+}
+
+.btn--primary:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #17110a;
+}
+
+.section {
+  padding: 72px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section__title {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 32px;
+}
+
+/* 機能リスト(グリッドは崩して2列 + 全幅の混在) */
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.94rem;
+  color: var(--text-2);
+}
+
+.feature-list li span {
+  color: var(--text);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .feature-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FAQ */
+
+.faq dt {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.faq dd {
+  margin: 0 0 32px;
+  color: var(--text-2);
+  font-size: 0.94rem;
+}
+
+.faq dd:last-child {
+  margin-bottom: 0;
+}
+
+/* お問い合わせ */
+
+.contact-mail {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- フッター ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0 64px;
+  margin-top: 32px;
+}
+
+.site-footer__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 22px;
+}
+
+.site-footer a {
+  color: var(--text-2);
+  border-bottom: none;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>焚き火マスター — 指先ひとつで火をおこす iOS ゲーム</title>
+<meta name="description" content="タッチとスワイプで火をおこす、1プレイ約40〜90秒のスコアアタックゲーム。焚き火マスターの遊び方、サポート、利用規約、プライバシーポリシーをご案内します。">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link rel="stylesheet" href="style.css">
+<style>
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero::after { content: ""; position: absolute; z-index: -1; right: 4%; top: 15%; width: min(38vw, 340px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,46,.22), rgba(255,122,46,.05) 48%, transparent 70%); }
+.hero__eyebrow { color: var(--accent-2); letter-spacing: .14em; font-size: .76rem; text-transform: uppercase; }
+.hero__title { max-width: 12em; }
+.hero__lead { max-width: 39em; }
+.release-note { display: inline-flex; align-items: center; gap: 9px; padding: 9px 13px; margin-top: 26px; border: 1px solid var(--border-strong); border-radius: 99px; color: var(--text-2); font-size: .8rem; }
+.release-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+.mode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.mode-card { padding: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+.mode-card h3 { margin: 0 0 8px; color: var(--text); font-size: .98rem; }
+.mode-card p { margin: 0; font-size: .88rem; }
+.premium-note { margin-top: 22px; padding: 18px 20px; background: rgba(255,122,46,.07); border: 1px solid rgba(255,122,46,.24); border-radius: 8px; font-size: .9rem; }
+.premium-note p { margin: 0; }
+.legal-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.legal-links a { padding: 9px 14px; border: 1px solid var(--border-strong); border-radius: 6px; }
+@media (max-width: 640px) { .hero { padding: 72px 0 64px; } .mode-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html" aria-label="焚き火マスター ホーム">
+      <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true">
+        <path class="brand__flame" d="M12 2c2.5 4 6 6.2 6 10.4A6 6 0 0 1 6 12.4C6 8.2 9.5 6 12 2Z" fill="#ff7a2e"/>
+        <path class="brand__flame" d="M12 9c1.2 1.9 2.7 3 2.7 5a2.7 2.7 0 1 1-5.4 0c0-2 1.5-3.1 2.7-5Z" fill="#ffd459"/>
+      </svg>
+      焚き火マスター
+    </a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <a href="#about">ゲーム紹介</a>
+      <a href="#support">サポート</a>
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシー</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap wrap--wide">
+    <section class="hero">
+      <p class="label hero__eyebrow">A small fire, a quick challenge</p>
+      <h1 class="hero__title">指先ひとつで、<br>火をおこせ。</h1>
+      <p class="hero__lead">道具に合わせてタップやスワイプ。火種をつくり、火口へ移し、リズムよく扇いで炎を育てよう。短い時間で何度も挑戦できる、焚き火のスコアアタックゲームです。</p>
+      <span class="release-note">App Store 公開準備中</span>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="section__title">火をおこす手応えを、短いプレイに。</h2>
+      <ul class="feature-list">
+        <li><span>タッチとスワイプで遊ぶ</span> — 道具ごとに違う操作を試そう</li>
+        <li><span>全 12 ステージ</span> — 天候や目標が変わる火起こしに挑戦</li>
+        <li><span>8 種類の道具</span> — 操作とスコア倍率を見極めよう</li>
+        <li><span>1 プレイ約 40〜90 秒</span> — ランクとハイスコアを目指そう</li>
+        <li><span>毎日のチャレンジ</span> — 日替わりルールで腕試し</li>
+        <li><span>実績 25 種・称号 8 段階</span> — 遊んだ記録を積み重ねよう</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">遊び方を選べる 4 つのモード</h2>
+      <div class="mode-grid">
+        <article class="mode-card"><h3>ストーリー</h3><p>晴れ、強風、雨、雪。天候と焚き火・炭おこしの目標が変わる 12 ステージを進みます。</p></article>
+        <article class="mode-card"><h3>デイリーチャレンジ</h3><p>毎日変わる道具や天候、特殊ルールに挑戦。記録と連続プレイ日数を残せます。</p></article>
+        <article class="mode-card"><h3>焚き火番</h3><p>薪をくべて炎を守り、突風やにわか雨をしのぐエンドレスモードです。</p></article>
+        <article class="mode-card"><h3>鑑賞モード</h3><p>揺れる炎と焚き火の音を眺めて過ごすモードです。ステージ 5 のクリアで解放されます。</p></article>
+      </div>
+      <div class="premium-note"><p><strong>無料で遊べる範囲：</strong>ストーリーのステージ 1〜4、デイリーチャレンジ、実績と記録。プレミアムは買い切り型で、購入画面に表示される内容を解放します。サブスクリプションはありません。最新の提供範囲は購入前にアプリ内でご確認ください。</p></div>
+    </section>
+
+    <section class="section" id="support">
+      <h2 class="section__title">サポート・お問い合わせ</h2>
+      <dl class="faq">
+        <dt>ゲームの操作がわかりません</dt>
+        <dd>プレイ中のお手本アニメーションと「いまやること」の案内を参考にしてください。火口へ移す場面では、強く動かさず、ゆっくりスワイプするのがコツです。</dd>
+        <dt>購入したプレミアムを復元できますか？</dt>
+        <dd>購入時と同じ Apple Account でサインインし、「設定」から「購入を復元」をお試しください。復元に追加料金はかかりません。</dd>
+        <dt>ゲームの記録は機種変更後も引き継がれますか？</dt>
+        <dd>ゲームデータは端末内に保存され、アプリ独自のオンライン同期はありません。端末のバックアップや復元は iOS の設定に従います。</dd>
+        <dt>現実の火起こしの説明ですか？</dt>
+        <dd>いいえ。ゲーム内の表現はフィクションで、現実の火の取り扱い方法や安全性を示すものではありません。</dd>
+      </dl>
+      <p>不具合の報告やご質問はメールでお寄せください。</p>
+      <p class="contact-mail"><a href="mailto:contact@div-me.com">contact@div-me.com</a></p>
+      <div class="legal-links">
+        <a href="terms.html">利用規約</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>© 2026 焚き火マスター</span>
+    <nav aria-label="フッターナビゲーション">
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="mailto:contact@div-me.com">お問い合わせ</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
