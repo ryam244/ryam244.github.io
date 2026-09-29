@@ -1,0 +1,24 @@
+:root { color-scheme: light; --ink:#20242b; --muted:#66707d; --paper:#fffdf8; --surface:#ffffff; --accent:#d94a34; --accent-dark:#a92f24; --line:#f0ddd7; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif; line-height:1.8; }
+a { color:var(--accent-dark); }
+.hero { padding:56px 20px 48px; color:#fff; text-align:center; background:linear-gradient(145deg,#ec8068,#d94a34 62%,#8e251e); }
+.mark { width:92px; height:92px; margin:0 auto 20px; border:1px solid #ffffff55; border-radius:25px; display:grid; place-items:center; background:#ffffff22; box-shadow:0 12px 30px #5d191944; font-size:42px; font-weight:800; letter-spacing:-.08em; }
+.hero h1 { margin:0 0 6px; font-size:clamp(2.2rem,8vw,3.4rem); letter-spacing:-.06em; }
+.hero p { margin:0; opacity:.9; }
+.wrap { max-width:860px; margin:auto; padding:34px 18px 64px; }
+.card { margin:0 0 18px; padding:28px clamp(22px,5vw,42px); border:1px solid var(--line); border-radius:20px; background:var(--surface); box-shadow:0 8px 24px #6d2b1b0d; }
+.card h2 { margin:0 0 14px; color:var(--accent-dark); font-size:1.25rem; }
+.card h3 { margin:24px 0 6px; font-size:1rem; }
+.card p { margin:0 0 13px; color:#414955; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+.feature { padding:18px; border-radius:15px; background:#fff4f0; }
+.feature strong { display:block; margin-bottom:5px; color:var(--accent-dark); }
+.feature span { color:var(--muted); font-size:.92rem; }
+.notice { padding:14px 16px; border-left:4px solid var(--accent); background:#fff2ed; color:#73352c; border-radius:0 10px 10px 0; }
+ul { margin:8px 0 15px; padding-left:1.3em; color:#414955; }
+li { margin:4px 0; }
+.nav, footer { text-align:center; color:var(--muted); font-size:.9rem; }
+.nav a { margin:0 9px; text-decoration:none; font-weight:600; }
+footer { padding:0 18px 36px; }
+@media (max-width:560px) { .hero { padding-top:40px; } .card { padding:23px 19px; } }
