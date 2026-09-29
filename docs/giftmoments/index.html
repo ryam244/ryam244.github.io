@@ -3,8 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GiftMoments — 贈り物をもっと丁寧に</title>
-  <meta name="description" content="GiftMomentsは、贈り物をもっと丁寧に管理するためのiOSアプリです。カレンダー管理・AI ギフト提案・お返し通知・ウィッシュリスト・贈答台帳を一つに。">
+  <title>GiftMoments — 贈り物の記録と準備をひとつに</title>
+  <meta name="description" content="GiftMomentsは、贈り物をもっと丁寧に管理するためのiOSアプリです。贈り物の記録、予定とリマインダー、ウィッシュリストをまとめるiPhone・iPadアプリ。ProではAI提案、レシート読み取り、支出分析などを利用できます。">
+  <link rel="canonical" href="https://ryam244.github.io/giftmoments/">
+  <meta property="og:title" content="GiftMoments — 贈り物をもっと丁寧に">
+  <meta property="og:description" content="大切な人への贈り物の記録、予定、ウィッシュリストをひとつに。">
+  <meta property="og:type" content="website">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -132,6 +136,14 @@
       white-space: nowrap;
     }
 
+    .release-note { max-width: 760px; margin: 1.5rem auto 0; padding: 1rem 1.25rem; border: 1px solid rgba(255,255,255,.35); border-radius: 12px; background: rgba(255,255,255,.1); font-size: .88rem; line-height: 1.7; }
+    .plans { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    .plans-inner { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 1rem; }
+    .plan-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+    .plan-card h3 { color: var(--primary); margin-bottom: .5rem; }
+    .plan-card p { color: var(--text-muted); font-size: .9rem; }
+    .price-note { max-width: 760px; margin: 1rem auto 0; text-align: center; color: var(--text-muted); font-size: .82rem; }
+
     /* ── FEATURES ── */
     .section {
       max-width: 900px;
@@ -248,10 +260,10 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="/20260524/">🎁 GiftMoments</a>
+    <a class="logo" href="/giftmoments/">🎁 GiftMoments</a>
     <nav>
-      <a href="/20260524/privacy.html">プライバシー</a>
-      <a href="/20260524/terms.html">利用規約</a>
+      <a href="/giftmoments/privacy.html">プライバシー</a>
+      <a href="/giftmoments/terms.html">利用規約</a>
     </nav>
   </div>
 </header>
@@ -260,68 +272,45 @@
 
   <!-- ── Hero ── -->
   <section class="hero">
-    <div class="hero-icon">🎁</div>
-    <h1>
-      GiftMoments
-      <span class="tagline">贈り物をもっと丁寧に</span>
-    </h1>
-    <p>大切な人への贈り物を、いつも心を込めて。<br>
-       ギフトの記録・管理から、AI によるプレゼント提案まで。<br>
-       贈る喜びを、もっと豊かにする iOS アプリ。</p>
-    <span class="btn-store" aria-disabled="true">
-      App Store でダウンロード
-      <span class="badge">近日公開</span>
-    </span>
+    <div class="hero-icon" aria-hidden="true">🎁</div>
+    <h1>GiftMoments<span class="tagline">贈り物をもっと丁寧に</span></h1>
+    <p>誰に何を贈ったか、次の記念日はいつか。<br>大切な人との贈り物を、記録から準備までひとつに。</p>
+    <span class="btn-store" aria-disabled="true">App Storeで公開準備中 <span class="badge">公開日未定</span></span>
+    <p class="release-note">ProのiCloud同期は準備中です。実機同期・データ移行・本番スキーマの確認が終わるまで、提供機能として案内・保証していません。データのバックアップとして利用しないでください。</p>
   </section>
 
   <!-- ── Features ── -->
   <div class="section">
-    <h2 class="section-title">主な機能</h2>
-    <p class="section-subtitle">GiftMoments が選ばれる 5 つの理由</p>
+    <h2 class="section-title">できること</h2>
+    <p class="section-subtitle">日々の贈り物を、無理なく記録・準備</p>
     <div class="features-grid">
-
-      <div class="feature-card">
-        <div class="feature-icon">📅</div>
-        <h3>カレンダー管理</h3>
-        <p>誕生日・記念日・お中元・お歳暮など、贈り物に関わるあらゆるイベントをカレンダーで一覧管理。うっかり忘れを防ぎます。</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">✨</div>
-        <h3>AI ギフト提案</h3>
-        <p>相手の年齢・趣味・予算をもとに、AI が最適なギフトアイデアを提案。楽天市場・Amazon との連携で、そのまま購入も可能です。</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🔔</div>
-        <h3>お返し通知</h3>
-        <p>いただいたギフトへのお返しを忘れないよう、適切なタイミングで通知。冠婚葬祭のマナーにも対応したスマートなサポート。</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🎀</div>
-        <h3>ウィッシュリスト</h3>
-        <p>自分が欲しいものをウィッシュリストに登録。家族や友人と共有して、プレゼント選びをもっとスムーズに。</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">📒</div>
-        <h3>贈答台帳</h3>
-        <p>贈った・もらった履歴を贈答台帳としてきれいに記録。人間関係ごとにまとめて、感謝のバランスをいつでも把握できます。</p>
-      </div>
-
+      <article class="feature-card"><div class="feature-icon" aria-hidden="true">📒</div><h3>贈り物を記録</h3><p>贈った・受け取った品、日付、金額、相手、メモや写真を記録。あとから履歴を見返せます。</p></article>
+      <article class="feature-card"><div class="feature-icon" aria-hidden="true">📅</div><h3>予定とリマインダー</h3><p>誕生日や記念日などの予定をカレンダーで確認。通知を許可すると、端末内のローカル通知でお知らせします。</p></article>
+      <article class="feature-card"><div class="feature-icon" aria-hidden="true">🎀</div><h3>相手とウィッシュリスト</h3><p>相手ごとの好みや贈り物候補を管理。無料プランは相手30人・ウィッシュリスト20件まで、Proは無制限です。</p></article>
+      <article class="feature-card"><div class="feature-icon" aria-hidden="true">✨</div><h3>Pro：提案とレシート読み取り</h3><p>好みや予算をもとにギフト案を提案。対応端末ではApple Foundation Models、その他では端末内のルールベース処理を使います。レシートの文字読み取りも端末上で行います。</p></article>
+      <article class="feature-card"><div class="feature-icon" aria-hidden="true">📊</div><h3>Pro：支出分析と書き出し</h3><p>贈答額のグラフや相手ごとのバランスを確認し、履歴をCSVで書き出せます。</p></article>
+      <article class="feature-card"><div class="feature-icon" aria-hidden="true">🧩</div><h3>Pro：ウィジェットと季節管理</h3><p>ホーム画面・ロック画面のウィジェットで予定を確認。お中元・お歳暮など季節の贈り物も管理できます。</p></article>
     </div>
   </div>
 
+  <section class="plans" aria-labelledby="plans-title">
+    <h2 class="section-title" id="plans-title">FreeとPro</h2>
+    <p class="section-subtitle">料金は購入画面に表示される金額をご確認ください</p>
+    <div class="plans-inner">
+      <article class="plan-card"><h3>Free</h3><p>ギフト記録、予定・通知、相手30人、ウィッシュリスト20件など、基本機能を利用できます。</p></article>
+      <article class="plan-card"><h3>Pro</h3><p>相手・ウィッシュリストの上限解除、ギフト提案、レシート読み取り、支出分析、CSV、ウィジェット、季節管理などを利用できます。</p></article>
+    </div>
+    <p class="price-note">アプリ内課金はAppleのApp Storeで処理されます。表示価格・通貨・無料トライアルの適用条件は購入時のAppleの画面が優先されます。</p>
+  </section>
 </main>
 
 <!-- ── Policy links ── -->
 <div class="policy-links">
   <div class="policy-links-inner">
-    <a class="policy-link-card" href="/20260524/privacy.html">
+    <a class="policy-link-card" href="/giftmoments/privacy.html">
       🔒 プライバシーポリシー
     </a>
-    <a class="policy-link-card" href="/20260524/terms.html">
+    <a class="policy-link-card" href="/giftmoments/terms.html">
       📄 利用規約
     </a>
   </div>
@@ -330,7 +319,7 @@
 <footer>
   <p>&copy; 2026 GiftMoments. All rights reserved.</p>
   <p class="footer-links" style="margin-top:0.35rem;">
-    最終更新日: 2026年5月25日
+    最終更新日: 2026年9月29日
   </p>
 </footer>
 
