@@ -8,26 +8,11 @@
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
 <link rel="stylesheet" href="style.css">
-<style>
-.hero { position: relative; isolation: isolate; overflow: hidden; }
-.hero::after { content: ""; position: absolute; z-index: -1; right: 4%; top: 15%; width: min(38vw, 340px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,46,.22), rgba(255,122,46,.05) 48%, transparent 70%); }
-.hero__eyebrow { color: var(--accent-2); letter-spacing: .14em; font-size: .76rem; text-transform: uppercase; }
-.hero__title { max-width: 12em; }
-.hero__lead { max-width: 39em; }
-.release-note { display: inline-flex; align-items: center; gap: 9px; padding: 9px 13px; margin-top: 26px; border: 1px solid var(--border-strong); border-radius: 99px; color: var(--text-2); font-size: .8rem; }
-.release-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
-.mode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.mode-card { padding: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
-.mode-card h3 { margin: 0 0 8px; color: var(--text); font-size: .98rem; }
-.mode-card p { margin: 0; font-size: .88rem; }
-.premium-note { margin-top: 22px; padding: 18px 20px; background: rgba(255,122,46,.07); border: 1px solid rgba(255,122,46,.24); border-radius: 8px; font-size: .9rem; }
-.premium-note p { margin: 0; }
-.legal-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-.legal-links a { padding: 9px 14px; border: 1px solid var(--border-strong); border-radius: 6px; }
-@media (max-width: 640px) { .hero { padding: 72px 0 64px; } .mode-grid { grid-template-columns: 1fr; } }
-</style>
+<link rel="stylesheet" href="landing.css">
+<link rel="canonical" href="https://ryam244.github.io/firecraft/">
 </head>
-<body>
+<body class="landing">
+<a class="skip-link" href="#about">ゲーム紹介へ移動</a>
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="index.html" aria-label="焚き火マスター ホーム">
@@ -40,22 +25,39 @@
     <nav class="site-nav" aria-label="メインナビゲーション">
       <a href="#about">ゲーム紹介</a>
       <a href="#support">サポート</a>
-      <a href="terms.html">利用規約</a>
       <a href="privacy.html">プライバシー</a>
     </nav>
   </div>
 </header>
 <main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="night-landscape" aria-hidden="true"><span></span><span></span></div>
+    <div class="fire-scene" aria-hidden="true">
+      <svg class="fire-fallback" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="glow"><stop stop-color="#f57121" stop-opacity=".35"/><stop offset="1" stop-color="#f57121" stop-opacity="0"/></radialGradient><linearGradient id="flame" x2=".2" y2="1"><stop stop-color="#db4c24"/><stop offset=".6" stop-color="#ffae46"/><stop offset="1" stop-color="#fff3bb"/></linearGradient></defs>
+        <circle cx="300" cy="355" r="230" fill="url(#glow)"/>
+        <path d="M238 452C153 362 295 308 277 169C371 258 306 309 355 346C358 315 380 307 375 272C461 394 361 452 330 461Z" fill="url(#flame)"/>
+        <path d="M263 451C235 399 309 371 300 318C355 372 320 397 342 424L323 457Z" fill="#fff0b4"/>
+        <path d="m228 469 142-30m-137 3 130 36" stroke="#62311e" stroke-width="19" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="hero-copy">
+      <p class="hero__eyebrow"><span></span> FIRECRAFT · 焚き火マスター</p>
+      <h1 id="hero-title">そのひと火が、<br>夜を<span>変える。</span></h1>
+      <p class="hero-intro">指先で火をおこす。<br>揺れる炎に、心がほどける。</p>
+      <p class="hero-description">火種をつくり、扇いで育てる。<br>小さな挑戦と、炎を眺める静かな時間を。</p>
+      <a class="primary-link" href="#about">焚き火の世界をのぞく <span aria-hidden="true">↘</span></a>
+      <p class="release-note"><span></span> iOS アプリ · App Store 公開準備中</p>
+    </div>
+    <div class="scene-caption" aria-hidden="true"><span>01 / THE FIRST SPARK</span><span>夜に、小さな灯りを。</span></div>
+    <button class="motion-control" type="button" hidden aria-pressed="false">炎の動きを止める <span aria-hidden="true">Ⅱ</span></button>
+    <a class="scroll-cue" href="#about"><span aria-hidden="true">↓</span> SCROLL TO EXPLORE</a>
+  </section>
   <div class="wrap wrap--wide">
-    <section class="hero">
-      <p class="label hero__eyebrow">A small fire, a quick challenge</p>
-      <h1 class="hero__title">指先ひとつで、<br>火をおこせ。</h1>
-      <p class="hero__lead">道具に合わせてタップやスワイプ。火種をつくり、火口へ移し、リズムよく扇いで炎を育てよう。短い時間で何度も挑戦できる、焚き火のスコアアタックゲームです。</p>
-      <span class="release-note">App Store 公開準備中</span>
-    </section>
-
     <section class="section" id="about">
-      <h2 class="section__title">火をおこす手応えを、短いプレイに。</h2>
+      <p class="section-kicker">THE ART OF MAKING FIRE</p>
+      <h2 class="section__title">小さな火種から、<br>夢中になるひとときへ。</h2>
+      <p class="section-lead">タップして、スワイプして、リズムよく扇ぐ。<br>1プレイ約40〜90秒。指先の工夫が、炎とスコアに変わります。</p>
       <ul class="feature-list">
         <li><span>タッチとスワイプで遊ぶ</span> — 道具ごとに違う操作を試そう</li>
         <li><span>全 12 ステージ</span> — 天候や目標が変わる火起こしに挑戦</li>
@@ -67,18 +69,21 @@
     </section>
 
     <section class="section">
-      <h2 class="section__title">遊び方を選べる 4 つのモード</h2>
+      <p class="section-kicker">FOUR WAYS TO FEEL THE FIRE</p>
+      <h2 class="section__title">挑む夜も、<br>ただ眺める夜も。</h2>
       <div class="mode-grid">
-        <article class="mode-card"><h3>ストーリー</h3><p>晴れ、強風、雨、雪。天候と焚き火・炭おこしの目標が変わる 12 ステージを進みます。</p></article>
-        <article class="mode-card"><h3>デイリーチャレンジ</h3><p>毎日変わる道具や天候、特殊ルールに挑戦。記録と連続プレイ日数を残せます。</p></article>
-        <article class="mode-card"><h3>焚き火番</h3><p>薪をくべて炎を守り、突風やにわか雨をしのぐエンドレスモードです。</p></article>
-        <article class="mode-card"><h3>鑑賞モード</h3><p>揺れる炎と焚き火の音を眺めて過ごすモードです。ステージ 5 のクリアで解放されます。</p></article>
+        <article class="mode-card"><div class="mode-number">01</div><p class="mode-label">STORY</p><h3>ストーリー</h3><p>晴れ、強風、雨、雪。天候と焚き火・炭おこしの目標が変わる 12 ステージを進みます。</p></article>
+        <article class="mode-card"><div class="mode-number">02</div><p class="mode-label">DAILY CHALLENGE</p><h3>デイリーチャレンジ</h3><p>毎日変わる道具や天候、特殊ルールに挑戦。記録と連続プレイ日数を残せます。</p></article>
+        <article class="mode-card"><div class="mode-number">03</div><p class="mode-label">KEEP THE FIRE</p><h3>焚き火番</h3><p>薪をくべて炎を守り、突風やにわか雨をしのぐエンドレスモードです。</p></article>
+        <article class="mode-card"><div class="mode-number">04</div><p class="mode-label">WATCH THE FLAME</p><h3>鑑賞モード</h3><p>揺れる炎と焚き火の音を眺めて過ごすモードです。ステージ 5 のクリアで解放されます。</p></article>
       </div>
       <div class="premium-note"><p><strong>無料で遊べる範囲：</strong>ストーリーのステージ 1〜4、デイリーチャレンジ、実績と記録。プレミアムは買い切り型で、購入画面に表示される内容を解放します。サブスクリプションはありません。最新の提供範囲は購入前にアプリ内でご確認ください。</p></div>
     </section>
 
     <section class="section" id="support">
-      <h2 class="section__title">サポート・お問い合わせ</h2>
+      <p class="section-kicker">WE ARE HERE TO HELP</p>
+      <h2 class="section__title">焚き火の、その先も。</h2>
+      <p class="section-lead">遊び方や購入についてのご案内です。</p>
       <dl class="faq">
         <dt>ゲームの操作がわかりません</dt>
         <dd>プレイ中のお手本アニメーションと「いまやること」の案内を参考にしてください。火口へ移す場面では、強く動かさず、ゆっくりスワイプするのがコツです。</dd>
@@ -108,5 +113,6 @@
     </nav>
   </div>
 </footer>
+<script type="module" src="flame.js"></script>
 </body>
 </html>
