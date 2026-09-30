@@ -1,334 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>月あかり — Tsukiakari Moon App</title>
-  <meta name="description" content="月あかり — 旧暦・二十四節気・月相を美しいUIで。Japanese lunar calendar and moon phase iOS app.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta name="description" content="月あかり — 月の満ち欠け、旧暦、季節のうつろいをひとつに。A calm moon and Japanese lunar calendar for iPhone.">
+  <meta property="og:title" content="月あかり — Tsukiakari">
+  <meta property="og:description" content="月と季節を、もっと身近に。 A thoughtful moon and calendar app for iPhone.">
+  <meta property="og:image" content="assets/app-icon.jpg">
+  <title>月あかり — Tsukiakari Moon & Calendar</title>
   <style>
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #f2de99;
-      --text: rgba(232,224,208,0.85);
-      --text-dim: rgba(232,224,208,0.45);
-      --purple: #1a0533;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
-      background: #0a0015;
-      color: var(--text);
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-
-    /* Stars background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(1px 1px at 20% 15%, rgba(255,255,255,0.7) 0%, transparent 100%),
-        radial-gradient(1px 1px at 75% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 45% 30%, rgba(255,255,255,0.6) 0%, transparent 100%),
-        radial-gradient(1px 1px at 90% 45%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 10% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,255,255,0.6) 0%, transparent 100%),
-        radial-gradient(1px 1px at 30% 85%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 80% 90%, rgba(255,255,255,0.5) 0%, transparent 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .lang-toggle {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      display: flex;
-      gap: 6px;
-      z-index: 100;
-    }
-    .lang-toggle button {
-      background: rgba(10,0,21,0.8);
-      border: 1px solid rgba(201,168,76,0.3);
-      color: var(--text-dim);
-      border-radius: 16px;
-      padding: 5px 14px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      backdrop-filter: blur(8px);
-      transition: all 0.2s;
-    }
-    .lang-toggle button.active { border-color: var(--gold); color: var(--gold); }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 100px 24px 80px;
-    }
-    .moon-emoji { font-size: 5rem; display: block; margin-bottom: 20px; animation: pulse 4s ease-in-out infinite; }
-    @keyframes pulse {
-      0%, 100% { filter: drop-shadow(0 0 24px rgba(201,168,76,0.4)); }
-      50% { filter: drop-shadow(0 0 48px rgba(201,168,76,0.7)); }
-    }
-    .hero h1 {
-      font-size: clamp(2.4rem, 7vw, 4rem);
-      font-weight: 200;
-      letter-spacing: 0.12em;
-      color: var(--gold-light);
-      margin-bottom: 8px;
-    }
-    .hero .subtitle {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      color: var(--text-dim);
-      margin-bottom: 36px;
-      letter-spacing: 0.04em;
-    }
-    .cta {
-      display: inline-block;
-      background: linear-gradient(135deg, #c9a84c, #f2de99);
-      color: #0a0015;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 14px 44px;
-      border-radius: 50px;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .cta:hover { opacity: 0.88; transform: scale(1.03); }
-
-    /* Features */
-    .features {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-    .features h2 {
-      text-align: center;
-      color: var(--gold);
-      font-weight: 300;
-      font-size: 1.3rem;
-      margin-bottom: 48px;
-      letter-spacing: 0.06em;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: rgba(26,5,51,0.6);
-      border: 1px solid rgba(201,168,76,0.15);
-      border-radius: 16px;
-      padding: 28px 24px;
-      backdrop-filter: blur(8px);
-      transition: border-color 0.2s;
-    }
-    .card:hover { border-color: rgba(201,168,76,0.4); }
-    .card .icon { font-size: 1.8rem; margin-bottom: 12px; }
-    .card h3 { color: var(--gold-light); font-weight: 400; font-size: 1rem; margin-bottom: 8px; }
-    .card p { color: var(--text-dim); font-size: 0.88rem; }
-
-    /* Screenshots placeholder */
-    .mockup {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 20px 24px 80px;
-    }
-    .phone-frame {
-      display: inline-block;
-      width: 220px;
-      height: 420px;
-      background: linear-gradient(180deg, #1a0533 0%, #0a0015 100%);
-      border-radius: 40px;
-      border: 2px solid rgba(201,168,76,0.3);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 60px rgba(201,168,76,0.15);
-    }
-    .phone-frame .moon-display {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -60%);
-      font-size: 5rem;
-    }
-    .phone-frame .label {
-      position: absolute;
-      bottom: 80px;
-      width: 100%;
-      text-align: center;
-      color: var(--gold-light);
-      font-size: 1.1rem;
-      font-weight: 200;
-      letter-spacing: 0.1em;
-    }
-    .phone-frame .sub {
-      position: absolute;
-      bottom: 58px;
-      width: 100%;
-      text-align: center;
-      color: var(--text-dim);
-      font-size: 0.7rem;
-    }
-
-    /* Footer */
-    footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 40px 24px;
-      border-top: 1px solid rgba(201,168,76,0.12);
-      color: var(--text-dim);
-      font-size: 0.85rem;
-    }
-    footer a { color: var(--gold); text-decoration: none; margin: 0 10px; }
-    footer a:hover { text-decoration: underline; }
-
-    [data-lang="en"] { display: none; }
-    body.en [data-lang="ja"] { display: none; }
-    body.en [data-lang="en"] { display: block; }
-    /* Inline spans need inline display */
-    body.en span[data-lang="en"],
-    span[data-lang="ja"] { display: inline; }
-    body.en span[data-lang="ja"] { display: none; }
-    body:not(.en) span[data-lang="en"] { display: none; }
+    :root{--paper:#f5f1e8;--paper2:#eae4d7;--ink:#272923;--muted:#727268;--line:#d9d2c4;--ochre:#99743c;--night:#303b38;--white:#fffdf8}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;line-height:1.75}a{color:inherit}button{font:inherit}.wrap{width:min(1120px,calc(100% - 48px));margin:auto}.top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:650;letter-spacing:.06em}.brand img{width:38px;height:38px;border-radius:12px}.nav{display:flex;gap:26px;align-items:center;font-size:.9rem}.nav a{text-decoration:none;color:var(--muted)}.nav a:hover{color:var(--ink)}.lang{border:1px solid var(--line);background:transparent;padding:7px 12px;border-radius:99px;cursor:pointer;color:var(--ink)}
+    .hero{padding:104px 0 96px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;color:var(--ochre);font-weight:700}.hero h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(3rem,7vw,5.7rem);line-height:1.13;letter-spacing:.08em;font-weight:500;margin:20px 0}.hero p{font-size:1.1rem;color:var(--muted);max-width:540px}.actions{display:flex;gap:12px;align-items:center;margin-top:32px;flex-wrap:wrap}.button{display:inline-flex;text-decoration:none;align-items:center;justify-content:center;padding:13px 22px;border-radius:8px;font-weight:650}.primary{background:var(--ink);color:var(--white)}.secondary{border:1px solid var(--line);color:var(--ink)}.hero-art{min-height:380px;border-radius:48% 48% 8px 8px;background:var(--night);display:grid;place-items:center;position:relative;overflow:hidden}.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid rgba(240,230,200,.16);border-radius:50%;width:360px;height:360px}.hero-art:after{width:470px;height:470px}.hero-art img{width:min(58%,280px);border-radius:28%;box-shadow:0 25px 75px #1118;position:relative;z-index:1}
+    section{padding:82px 0;border-top:1px solid var(--line)}.section-head{max-width:650px;margin-bottom:36px}.section-head h2{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(2rem,4vw,3rem);line-height:1.3;font-weight:500;margin:10px 0}.section-head p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:24px;min-height:190px}.num{font:italic 1rem Georgia;color:var(--ochre)}.card h3{font-size:1.08rem;margin:20px 0 8px}.card p{font-size:.92rem;color:var(--muted);margin:0}.plans{display:grid;grid-template-columns:1fr 1fr;gap:18px}.plan{padding:30px;border:1px solid var(--line);border-radius:12px;background:var(--white)}.plan.pro{background:var(--night);color:#f5f1e8;border-color:var(--night)}.plan-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ochre);font-weight:700}.pro .plan-label{color:#d9bc81}.plan h3{font-size:1.8rem;margin:7px 0 16px}.plan p{color:var(--muted)}.pro p{color:#d6d3c9}.plan ul{padding-left:1.2em}.plan li{padding:4px 0}.fine{font-size:.83rem;color:var(--muted)}
+    .closing{padding:90px 0;text-align:center;background:var(--paper2)}.closing h2{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:2.5rem;font-weight:500;margin:0 0 12px}.closing p{color:var(--muted)}footer{padding:28px 0;color:var(--muted);font-size:.85rem}footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}footer a{margin-left:18px;text-decoration:none}.en{display:none}body.english .ja{display:none}body.english .en{display:initial}body.english div.en,body.english p.en,body.english h2.en,body.english h3.en{display:block}body.english span.en{display:inline}body.english .ja{display:none!important}
+    @media(max-width:760px){.wrap{width:min(100% - 36px,560px)}.top{height:66px}.nav{gap:12px}.nav .legal-link{display:none}.hero{padding:66px 0;grid-template-columns:1fr;gap:36px}.hero-art{min-height:300px;grid-row:1}.hero h1{font-size:3.4rem}.grid{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}section{padding:62px 0}.card{padding:18px}.closing h2{font-size:2rem}}
+    @media(max-width:420px){.grid{grid-template-columns:1fr}.brand{font-size:.9rem}.nav{font-size:.8rem;gap:9px}}
   </style>
+  <script>function setLang(lang){document.body.classList.toggle('english',lang==='en');document.documentElement.lang=lang;try{localStorage.setItem('tsukiakari-lang',lang)}catch(e){}}document.addEventListener('DOMContentLoaded',()=>{let saved;try{saved=localStorage.getItem('tsukiakari-lang')}catch(e){}setLang(saved||((navigator.language||'').toLowerCase().startsWith('ja')?'ja':'en'))})</script>
 </head>
 <body>
-
-<div class="lang-toggle">
-  <button class="active" onclick="setLang('ja')">日本語</button>
-  <button onclick="setLang('en')">English</button>
-</div>
-
-<!-- Hero -->
-<section class="hero">
-  <span class="moon-emoji">🌕</span>
-  <h1>月あかり</h1>
-  <p class="subtitle">
-    <span data-lang="ja">旧暦・二十四節気・月相を美しいUIで</span>
-    <span data-lang="en">Japanese Lunar Calendar &amp; Moon Phases · Beautiful Dark UI</span>
-  </p>
-  <a href="#" class="cta" id="app-store-link">
-    <span data-lang="ja">App Store で入手</span>
-    <span data-lang="en">Download on the App Store</span>
-  </a>
-</section>
-
-<!-- Phone mockup -->
-<section class="mockup">
-  <div class="phone-frame">
-    <div class="moon-display">🌕</div>
-    <div class="label">望月</div>
-    <div class="sub">
-      <span data-lang="ja">月齢 15.0 · 輝面比 100%</span>
-      <span data-lang="en">Age 15.0 · Illumination 100%</span>
-    </div>
-  </div>
-</section>
-
-<!-- Features -->
-<section class="features">
-  <h2 data-lang="ja">特徴</h2>
-  <h2 data-lang="en">Features</h2>
-
-  <div class="grid">
-    <div class="card" data-lang="ja">
-      <div class="icon">🌙</div>
-      <h3>月の和名</h3>
-      <p>三日月・十三夜・望月・十六夜・立待月…月齢から今夜の月の和名を表示します。</p>
-    </div>
-    <div class="card" data-lang="ja">
-      <div class="icon">📅</div>
-      <h3>旧暦・和風月名</h3>
-      <p>令和の旧暦日付、睦月〜師走の和風月名を毎日表示。二十四節気・七十二候も確認できます。</p>
-    </div>
-    <div class="card" data-lang="ja">
-      <div class="icon">⭐</div>
-      <h3>月のリズム</h3>
-      <p>新月・上弦・満月・下弦に合わせた、日本の暦文化に基づく行動提案をお届けします。</p>
-    </div>
-    <div class="card" data-lang="ja">
-      <div class="icon">🎂</div>
-      <h3>誕生日の月相</h3>
-      <p>あなたが生まれた夜の月相を調べてシェアカードを生成。SNSで家族・友人と共有できます。</p>
-    </div>
-    <div class="card" data-lang="ja">
-      <div class="icon">📱</div>
-      <h3>ウィジェット</h3>
-      <p>ホーム画面に月齢・旧暦日付・節気を表示。StandBy モードにも対応しています。</p>
-    </div>
-    <div class="card" data-lang="ja">
-      <div class="icon">🔕</div>
-      <h3>完全オフライン</h3>
-      <p>外部 API ゼロ。山でも海でも、通信なしで動作します。</p>
-    </div>
-
-    <!-- English cards -->
-    <div class="card" data-lang="en">
-      <div class="icon">🌙</div>
-      <h3>Traditional Moon Names</h3>
-      <p>Discover tonight's moon by its poetic Japanese name — Mikazuki, Jūsan-ya, Mochizuki, Izayoi, Tachimachi-zuki and more.</p>
-    </div>
-    <div class="card" data-lang="en">
-      <div class="icon">📅</div>
-      <h3>Lunar Calendar</h3>
-      <p>Full Japanese lunar date in the Reiwa era, traditional month names (Mutsuki–Shiwasu), 24 solar terms, and 72 micro-seasons.</p>
-    </div>
-    <div class="card" data-lang="en">
-      <div class="icon">⭐</div>
-      <h3>Moon Rhythm</h3>
-      <p>Lifestyle suggestions rooted in Japanese calendar tradition — tuned to new moon, first quarter, full moon, and last quarter.</p>
-    </div>
-    <div class="card" data-lang="en">
-      <div class="icon">🎂</div>
-      <h3>Birthday Moon Phase</h3>
-      <p>Look up the moon phase on any birthday and generate a shareable card — perfect for social media.</p>
-    </div>
-    <div class="card" data-lang="en">
-      <div class="icon">📱</div>
-      <h3>Widgets &amp; StandBy</h3>
-      <p>See moon age, lunar date, and seasonal term on your home screen. StandBy mode shows a full moon display while charging.</p>
-    </div>
-    <div class="card" data-lang="en">
-      <div class="icon">🔕</div>
-      <h3>100% Offline</h3>
-      <p>Zero external APIs. Everything is calculated on-device — mountains, beaches, anywhere without signal.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 ryam244 &nbsp;·&nbsp;
-    <a href="privacy.html" data-lang="ja">プライバシーポリシー</a>
-    <a href="privacy.html" data-lang="en">Privacy Policy</a>
-    &nbsp;·&nbsp;
-    <a href="terms.html" data-lang="ja">利用規約</a>
-    <a href="terms.html" data-lang="en">Terms of Use</a>
-    &nbsp;·&nbsp;
-    <a href="https://github.com/ryam244/20260507">GitHub</a>
-  </p>
-</footer>
-
-<script>
-  function setLang(lang) {
-    document.body.className = lang === 'en' ? 'en' : '';
-    document.querySelectorAll('.lang-toggle button').forEach((btn, i) => {
-      btn.classList.toggle('active', (lang === 'ja' && i === 0) || (lang === 'en' && i === 1));
-    });
-    document.documentElement.lang = lang;
-  }
-  if (navigator.language && navigator.language.startsWith('ja') === false) {
-    setLang('en');
-  }
-</script>
-</body>
-</html>
+<header class="wrap top"><a class="brand" href="index.html"><img src="assets/app-icon.jpg" alt=""><span>月あかり <span style="font-weight:400;color:var(--muted)">/ Tsukiakari</span></span></a><nav class="nav"><a href="#features"><span class="ja">できること</span><span class="en">Explore</span></a><a href="#plans"><span class="ja">無料とPro</span><span class="en">Free & Pro</span></a><a class="legal-link" href="privacy.html"><span class="ja">ポリシー</span><span class="en">Privacy</span></a><button class="lang" onclick="setLang(document.body.classList.contains('english')?'ja':'en')">日本語 / EN</button></nav></header>
+<main>
+  <div class="wrap hero"><div><div class="eyebrow"><span class="ja">月と季節のカレンダー</span><span class="en">Moon & seasonal calendar</span></div><h1><span class="ja">月を見て、<br>季節を知る。</span><span class="en">Look up.<br>Feel the seasons.</span></h1><p><span class="ja">月の満ち欠けから、旧暦、二十四節気、夜空の惑星まで。日々の空を静かに楽しむための iPhone アプリです。</span><span class="en">From moon phases and the traditional lunar calendar to seasonal markers and visible planets—a quiet companion for the sky above you.</span></p><div class="actions"><a class="button primary" href="https://apps.apple.com/jp/app/%E6%9C%88%E3%81%82%E3%81%8B%E3%82%8A/id6767818557" target="_blank" rel="noopener"><span class="ja">App Storeで見る ↗</span><span class="en">View on the App Store ↗</span></a><a class="button secondary" href="#features"><span class="ja">アプリを知る</span><span class="en">Discover the app</span></a></div><p class="fine"><span class="ja">iPhone向け · 日本語・English · ダウンロード無料</span><span class="en">For iPhone · Japanese and English · Free to download</span></p></div><div class="hero-art"><img src="assets/app-icon.jpg" alt="月あかり app icon"></div></div>
+  <section id="features"><div class="wrap"><div class="section-head"><div class="eyebrow"><span class="ja">空をひらく、4つの視点</span><span class="en">Four ways to read the sky</span></div><h2><span class="ja">知りたい空のことを、ひと目で。</span><span class="en">A clearer view of the sky.</span></h2><p><span class="ja">必要な情報はそのままに、毎日開きたくなる落ち着いた見やすさで。</span><span class="en">The details you need, arranged in a calm, readable space you’ll want to return to.</span></p></div><div class="grid">
+    <article class="card"><span class="num">01 / MOON</span><h3><span class="ja">今日の月</span><span class="en">The moon tonight</span></h3><p><span class="ja">月齢、照らされている割合、月の出・月の入り。今夜の月を身近に。</span><span class="en">Moon age, illumination, moonrise and moonset—your local view of tonight’s moon.</span></p></article>
+    <article class="card"><span class="num">02 / CALENDAR</span><h3><span class="ja">月と季節の暦</span><span class="en">Moon & calendar</span></h3><p><span class="ja">月の満ち欠け、旧暦、二十四節気、七十二候をひとつの暦に。</span><span class="en">Moon phases, lunar dates, 24 solar terms and 72 micro-seasons in one calendar.</span></p></article>
+    <article class="card"><span class="num">03 / SKY</span><h3><span class="ja">今夜の空</span><span class="en">The sky tonight</span></h3><p><span class="ja">惑星の位置や見ごろ、星座、天体の接近を確認できます。</span><span class="en">Explore planetary positions and visibility, constellations and close approaches.</span></p></article>
+    <article class="card"><span class="num">04 / BIRTHDAY</span><h3><span class="ja">あなたの月</span><span class="en">Your birthday moon</span></h3><p><span class="ja">誕生日の月相を見つけて、同じ月に出会う楽しみを。</span><span class="en">Discover the moon phase on your birthday and find its next return.</span></p></article>
+  </div></div></section>
+  <section id="plans"><div class="wrap"><div class="section-head"><div class="eyebrow"><span class="ja">シンプルなプラン</span><span class="en">A simple choice</span></div><h2><span class="ja">まずは無料で。もっと知りたくなったらPro。</span><span class="en">Start free. Go deeper with Pro.</span></h2><p><span class="ja">毎日の月と季節を楽しむ機能は無料。より先まで調べたい方向けに、Proの追加機能をご用意しています。</span><span class="en">Everyday moon and calendar essentials are free. Pro adds tools for those who want to look further ahead.</span></p></div><div class="plans"><article class="plan"><div class="plan-label">FREE</div><h3><span class="ja">日々の空を楽しむ</span><span class="en">For everyday discovery</span></h3><p><span class="ja">月あかりの基本機能を無料でお使いいただけます。</span><span class="en">The essentials of Tsukiakari, free to use.</span></p><ul><li><span class="ja">今日の月相・月齢・月の出入り</span><span class="en">Today’s moon phase, age and rise/set</span></li><li><span class="ja">月の暦、旧暦、季節の情報</span><span class="en">Moon calendar, lunar dates and seasonal markers</span></li><li><span class="ja">惑星と誕生日の月相の基本情報</span><span class="en">Planetary and birthday-moon essentials</span></li><li><span class="ja">月の通知とウィジェット</span><span class="en">Moon notifications and widgets</span></li></ul></article><article class="plan pro"><div class="plan-label">PRO · ONE-TIME PURCHASE</div><h3><span class="ja">もっと先まで、深く。</span><span class="en">Explore further.</span></h3><p><span class="ja">サブスクリプションではなく、一度の購入でPro機能を利用できます。</span><span class="en">Unlock Pro with a one-time purchase. No subscription.</span></p><ul><li><span class="ja">一年分の新月・満月一覧</span><span class="en">A full year of new and full moons</span></li><li><span class="ja">通知時刻のカスタマイズ</span><span class="en">Choose your notification time</span></li><li><span class="ja">星座や天体接近の詳しい情報</span><span class="en">Detailed constellation and conjunction information</span></li><li><span class="ja">誕生日と同じ月相に戻る日</span><span class="en">When your birthday moon phase returns</span></li></ul><p class="fine"><span class="ja">価格は購入時にApp Storeで表示されます。購入の復元にも対応しています。</span><span class="en">Your localized price is shown in the App Store. Purchases can be restored.</span></p></article></div></div></section>
+  <div class="closing"><div class="wrap"><h2><span class="ja">今夜、月を見上げてみませんか。</span><span class="en">Take a moment to look up tonight.</span></h2><p><span class="ja">月あかりと、空の小さな変化を。</span><span class="en">A little more wonder in the sky above.</span></p><div class="actions" style="justify-content:center"><a class="button primary" href="https://apps.apple.com/jp/app/%E6%9C%88%E3%81%82%E3%81%8B%E3%82%8A/id6767818557" target="_blank" rel="noopener"><span class="ja">App Storeでダウンロード ↗</span><span class="en">Download on the App Store ↗</span></a></div></div></div>
+</main>
+<footer><div class="wrap"><span>© 2026 ryam244 · 月あかり / Tsukiakari</span><span><a href="privacy.html"><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></a><a href="terms.html"><span class="ja">利用規約</span><span class="en">Terms of Use</span></a><a href="mailto:contact@div-me.com">Contact</a></span></div></footer>
+</body></html>

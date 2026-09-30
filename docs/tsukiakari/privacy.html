@@ -4,206 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy / プライバシーポリシー — 月あかり Tsukiakari</title>
-  <style>
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #f2de99;
-      --text: rgba(232,224,208,0.85);
-      --text-dim: rgba(232,224,208,0.45);
-      --border: rgba(201,168,76,0.2);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
-      background: #0a0015;
-      color: var(--text);
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 48px 24px 100px;
-      line-height: 1.85;
-    }
-    header { text-align: center; margin-bottom: 48px; }
-    header .moon { font-size: 3rem; display: block; margin-bottom: 12px; }
-    header h1 { color: var(--gold-light); font-weight: 300; font-size: 1.5rem; letter-spacing: 0.04em; }
-    header p { color: var(--text-dim); font-size: 0.9rem; margin-top: 6px; }
-
-    .lang-toggle {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 40px;
-    }
-    .lang-toggle button {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      border-radius: 20px;
-      padding: 6px 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-    }
-    .lang-toggle button.active {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .section {
-      border-top: 1px solid var(--border);
-      padding-top: 28px;
-      margin-top: 28px;
-    }
-    h2 { color: var(--gold); font-weight: 400; font-size: 1rem; margin-bottom: 12px; }
-    p { font-size: 0.95rem; margin-bottom: 10px; }
-    ul { padding-left: 1.4em; margin-bottom: 10px; }
-    li { font-size: 0.95rem; margin-bottom: 6px; }
-    strong { color: var(--gold-light); font-weight: 500; }
-    a { color: var(--gold); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .updated { color: var(--text-dim); font-size: 0.82rem; margin-top: 64px; text-align: center; }
-
-    /* Language switching */
-    [data-lang="en"] { display: none; }
-    body.en [data-lang="ja"] { display: none; }
-    body.en [data-lang="en"] { display: block; }
-
-    nav { text-align: center; margin-bottom: 32px; font-size: 0.88rem; }
-    nav a { color: var(--text-dim); margin: 0 12px; }
-    nav a:hover { color: var(--gold); }
+<style>
+    :root{--paper:#f5f1e8;--paper2:#eae4d7;--ink:#272923;--muted:#727268;--line:#d9d2c4;--ochre:#99743c;--white:#fffdf8}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;background:var(--paper);color:var(--ink);max-width:760px;margin:0 auto;padding:36px 24px 90px;line-height:1.85}
+    header{text-align:center;margin:28px 0 30px}header .moon{display:block;margin:0 auto 14px;width:68px;height:68px;border-radius:20px}header h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:var(--ink);font-weight:500;font-size:1.55rem;letter-spacing:.04em}header p{color:var(--muted);font-size:.92rem;margin-top:6px}
+    .lang-toggle{display:flex;justify-content:center;gap:8px;margin-bottom:30px}.lang-toggle button{background:var(--white);border:1px solid var(--line);color:var(--muted);border-radius:20px;padding:7px 18px;cursor:pointer;font-size:.85rem}.lang-toggle button.active{border-color:var(--ochre);color:var(--ochre)}
+    .section{border-top:1px solid var(--line);padding-top:24px;margin-top:24px}h2{color:var(--ochre);font-weight:650;font-size:1rem;margin-bottom:10px}p{font-size:.95rem;margin-bottom:10px}ul{padding-left:1.4em;margin-bottom:10px}li{font-size:.95rem;margin-bottom:6px}strong{color:var(--ink);font-weight:700}a{color:var(--ochre);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}.updated{color:var(--muted);font-size:.82rem;margin-top:52px;text-align:center}
+    [data-lang="en"]{display:none}body.en [data-lang="ja"]{display:none}body.en [data-lang="en"]{display:block}nav{text-align:center;margin-bottom:24px;font-size:.88rem}nav a{color:var(--muted);margin:0 12px;text-decoration:none}nav a:hover{color:var(--ink)}
+    @media(max-width:520px){body{padding:22px 18px 64px}.section{padding-top:20px;margin-top:20px}}
   </style>
 </head>
 <body>
-
 <header>
-  <span class="moon">🌕</span>
+  <img class="moon" src="assets/app-icon.jpg" alt="月あかり app icon">
   <h1>月あかり &nbsp;·&nbsp; Tsukiakari</h1>
   <p data-lang="ja">プライバシーポリシー</p>
   <p data-lang="en">Privacy Policy</p>
 </header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="privacy.html">Privacy</a>
-  <a href="terms.html">Terms</a>
-</nav>
-
+<nav><a href="index.html">Home / ホーム</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
 <div class="lang-toggle">
   <button class="active" onclick="setLang('ja')">日本語</button>
   <button onclick="setLang('en')">English</button>
 </div>
-
-<!-- ==================== JAPANESE ==================== -->
 <div data-lang="ja">
-
-<p>「月あかり」（以下、本アプリ）は ryam244（以下、開発者）が提供する iOS アプリケーションです。本ポリシーは、本アプリにおける個人情報の取り扱いについて説明します。</p>
-
-<div class="section">
-  <h2>1. 収集する情報</h2>
-  <ul>
-    <li><strong>位置情報（任意）</strong>：月の出・月の入り時刻の計算のみに使用します。取得した位置情報は端末内でのみ処理され、開発者を含む第三者には一切送信されません。位置情報を拒否した場合は、東京（35.68°N, 139.77°E）を既定値として計算します。</li>
-    <li><strong>アプリ内設定データ</strong>：お名前・手動設定した地点情報などは端末の UserDefaults にのみ保存されます。外部サーバーへの送信は行いません。</li>
-  </ul>
+<p>「月あかり」（以下「本アプリ」）は、ryam244（以下「運営者」）が提供するiOSアプリです。このポリシーは、本アプリで取り扱う情報とその利用方法を説明します。</p>
+<div class="section"><h2>1. 位置情報とアプリ内設定</h2><ul><li><strong>位置情報（任意）</strong>：許可を得た場合、月の出・月の入りと惑星の見え方の計算に端末内で使用します。位置情報を運営者のサーバーへ送信することはありません。許可はiOSの「設定」＞「プライバシーとセキュリティ」＞「位置情報サービス」からいつでも取り消せます。許可されず、手動の地点設定もない場合は、東京（北緯35.68°・東経139.77°）を使用します。</li><li><strong>アプリ内設定</strong>：名前、手動設定した地点、通知設定などは端末内に保存し、運営者のサーバーへ送信しません。通知は端末のローカル通知として予約され、プッシュ通知サーバーは使用しません。端末のバックアップや移行時の情報の取扱いは、OSとご利用のバックアップ設定に従います。アプリを削除すると端末内に保存したアプリデータも削除されます。</li></ul></div>
+<div class="section"><h2>2. App Storeでの購入</h2><p>Pro商品の表示、購入状態の確認、購入の復元にはAppleのStoreKitを使用します。アプリはProの機能を有効化するために必要な商品情報と検証済み購入状態を受け取りますが、これらを運営者のサーバーへ送信しません。購入の処理に必要なApple Account情報と決済情報はAppleが取り扱います。運営者はクレジットカード情報を受領・保存しません。Appleによる情報の取扱いについては、<a href="https://www.apple.com/legal/privacy/" rel="noopener">Appleのプライバシーポリシー</a>をご確認ください。</p></div>
+<div class="section"><h2>3. 運営者による収集と第三者提供</h2><p>本アプリには、運営者のサーバーへ個人情報、位置情報、アプリ内設定、利用履歴を送信する機能はありません。広告・第三者アナリティクスSDKも使用していません。AppleがOS、App Store、購入または診断サービスのために取り扱う情報は、Appleの設定およびポリシーに従います。アプリ内の「Webで開く」から外部ページを開く場合、その後の通信には各サイトのポリシーが適用されます。</p></div>
+<div class="section"><h2>4. 子どものプライバシー</h2><p>本アプリは、運営者のサーバーへ個人情報を収集・送信する機能を備えておらず、子どもの個人情報を意図的に収集しません。保護者の方から懸念の連絡を受けた場合は、内容を確認して対応します。</p></div>
+<div class="section"><h2>5. 情報の正確性</h2><p>月相、旧暦、二十四節気、七十二候、月の出・月の入り、惑星の見え方などはアプリ内の計算による参考情報です。公的機関の発表値と異なる場合があり、専門的・重要な判断には公式情報をご確認ください。医療、健康、災害等の助言を提供するものではありません。</p></div>
+<div class="section"><h2>6. ポリシーの変更</h2><p>本ポリシーを変更する場合は、このページに改定版と更新日を掲載します。重要な変更がある場合は、可能な範囲でアプリ内または本ページでお知らせします。</p></div>
+<div class="section"><h2>7. お問い合わせ</h2><p>本ポリシーに関するお問い合わせは <a href="mailto:contact@div-me.com">contact@div-me.com</a> までご連絡ください。</p></div>
 </div>
-
-<div class="section">
-  <h2>2. 収集しない情報</h2>
-  <ul>
-    <li>氏名・メールアドレスなどの個人識別情報</li>
-    <li>健康情報・金融情報</li>
-    <li>利用履歴・行動ログ・クラッシュレポート</li>
-    <li>広告識別子（IDFA）</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>3. 第三者提供</h2>
-  <p>本アプリは外部 API・外部サーバーと通信を行いません。収集した情報を第三者に提供・販売することは一切ありません。</p>
-</div>
-
-<div class="section">
-  <h2>4. 広告・アナリティクス</h2>
-  <p>本アプリは広告表示およびアナリティクス SDK を使用していません。</p>
-</div>
-
-<div class="section">
-  <h2>5. 免責事項</h2>
-  <p>本アプリが表示する月相・旧暦・二十四節気などの情報は、天文計算に基づく自然現象の記録です。占い・医療・健康アドバイスを提供するものではありません。計算値は参考情報であり、専門機関のデータと若干異なる場合があります。</p>
-</div>
-
-<div class="section">
-  <h2>6. 子どものプライバシー</h2>
-  <p>本アプリは 4 歳以上を対象としており、13 歳未満の子どもから意図的に個人情報を収集することはありません。</p>
-</div>
-
-<div class="section">
-  <h2>7. ポリシーの変更</h2>
-  <p>本ポリシーは予告なく変更される場合があります。変更後のポリシーはこのページに掲載した時点で効力を生じます。</p>
-</div>
-
-<div class="section">
-  <h2>8. お問い合わせ</h2>
-  <p>本ポリシーに関するご質問は <a href="https://github.com/ryam244/20260507/issues">GitHub Issues</a> よりお問い合わせください。</p>
-</div>
-
-</div><!-- /ja -->
-
-<!-- ==================== ENGLISH ==================== -->
 <div data-lang="en">
-
-<p>"Tsukiakari" (hereinafter "the App") is an iOS application developed by ryam244 (hereinafter "Developer"). This policy explains how the App handles your information.</p>
-
-<div class="section">
-  <h2>1. Information We Collect</h2>
-  <ul>
-    <li><strong>Location (optional)</strong>: Used solely to calculate moonrise and moonset times for your location. Location data is processed entirely on your device and is never transmitted to any server. If you decline, Tokyo (35.68°N, 139.77°E) is used as default.</li>
-    <li><strong>In-app preferences</strong>: Your name and manually entered location are stored only in the device's local UserDefaults. Nothing is sent to external servers.</li>
-  </ul>
+<p>“Tsukiakari” (the “App”) is an iOS app provided by ryam244 (the “Operator”). This policy explains what information the App handles and how it is used.</p>
+<div class="section"><h2>1. Location and App Settings</h2><ul><li><strong>Optional location</strong>: With your permission, location is processed on your device to calculate moonrise, moonset and planetary visibility. The App does not send location to the Operator’s servers. You can revoke permission at any time in iOS Settings > Privacy & Security > Location Services. If permission is denied and no manual location is set, the App uses Tokyo (35.68° N, 139.77° E).</li><li><strong>App settings</strong>: Your name, manually entered location and notification preferences are stored on your device and are not sent to the Operator’s servers. Notifications are scheduled locally on your device; the App does not use a push-notification server. Handling during device backup or migration depends on your OS and backup settings. Deleting the App removes its locally stored app data.</li></ul></div>
+<div class="section"><h2>2. App Store Purchases</h2><p>Apple’s StoreKit is used to display the Pro product, check purchase status and restore purchases. The App receives the product information and verified purchase status needed to unlock Pro, but does not send them to the Operator’s servers. Apple handles the Apple Account and payment information needed to process a purchase. The Operator does not receive or store your credit-card details. See <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple’s Privacy Policy</a> for Apple’s data practices.</p></div>
+<div class="section"><h2>3. Collection by the Operator and Sharing</h2><p>The App has no function for sending personal information, location, app settings or usage history to the Operator’s servers. It contains no advertising or third-party analytics SDKs. Information Apple handles for iOS, the App Store, purchases or diagnostics is governed by Apple’s settings and policies. If you open an external page using an in-app web link, that site’s policy applies to subsequent activity there.</p></div>
+<div class="section"><h2>4. Children’s Privacy</h2><p>The App has no function for collecting or sending personal information to the Operator’s servers and does not knowingly collect children’s personal information. If a parent or guardian contacts us with a concern, we will review it and respond.</p></div>
+<div class="section"><h2>5. Accuracy of Information</h2><p>Moon phases, lunar dates, the 24 solar terms, 72 micro-seasons, moonrise and moonset, and planetary visibility are calculated in the App and provided for reference. Results may differ from official sources. Consult authoritative sources for professional or important decisions. The App does not provide medical, health or emergency advice.</p></div>
+<div class="section"><h2>6. Changes to This Policy</h2><p>Any revision will be posted on this page with an updated date. Where practical, material changes will also be announced in the App or on this page.</p></div>
+<div class="section"><h2>7. Contact</h2><p>For questions about this policy, email <a href="mailto:contact@div-me.com">contact@div-me.com</a>.</p></div>
 </div>
-
-<div class="section">
-  <h2>2. Information We Do Not Collect</h2>
-  <ul>
-    <li>Personal identifiers (name, email, etc.)</li>
-    <li>Health or financial data</li>
-    <li>Usage history, behavior logs, or crash reports</li>
-    <li>Advertising identifiers (IDFA)</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>3. Third-Party Sharing</h2>
-  <p>The App does not communicate with any external API or server. We never share or sell any data to third parties.</p>
-</div>
-
-<div class="section">
-  <h2>4. Advertising &amp; Analytics</h2>
-  <p>The App contains no advertisements and no analytics SDKs.</p>
-</div>
-
-<div class="section">
-  <h2>5. Disclaimer</h2>
-  <p>Moon phase, lunar calendar, and seasonal data displayed by the App are astronomical calculations for reference purposes only. They are not fortune-telling, medical, or health advice. Calculated values may differ slightly from official sources.</p>
-</div>
-
-<div class="section">
-  <h2>6. Children's Privacy</h2>
-  <p>The App is rated 4+ and is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
-</div>
-
-<div class="section">
-  <h2>7. Changes to This Policy</h2>
-  <p>We may update this policy without prior notice. Changes take effect when posted on this page.</p>
-</div>
-
-<div class="section">
-  <h2>8. Contact</h2>
-  <p>For questions about this policy, please open an issue at <a href="https://github.com/ryam244/20260507/issues">GitHub Issues</a>.</p>
-</div>
-
-</div><!-- /en -->
-
-<p class="updated">Last updated: May 2026 &nbsp;·&nbsp; 最終更新：2026年5月</p>
-
+<p class="updated">Last updated: September 29, 2026 &nbsp;·&nbsp; 最終更新：2026年9月29日</p>
 <script>
   function setLang(lang) {
     document.body.className = lang === 'en' ? 'en' : '';
@@ -212,10 +56,7 @@
     });
     document.documentElement.lang = lang;
   }
-  // Auto-detect browser language
-  if (navigator.language && navigator.language.startsWith('ja') === false) {
-    setLang('en');
-  }
+  if (navigator.language && !navigator.language.startsWith('ja')) { setLang('en'); }
 </script>
 </body>
 </html>
