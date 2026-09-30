@@ -1,0 +1,60 @@
+/* Landing-only atmosphere. Legal pages keep the shared reading layout. */
+.landing{--bg:#080e11;--surface:#0d1519;--text:#eee7d9;--text-2:#b2b6b3;--accent:#eaa567;--accent-2:#f2c49c;background:var(--bg)}
+.landing .site-header{position:absolute;inset:0 0 auto;background:transparent;border:0}
+.landing .site-header__inner{max-width:1440px;padding:27px 5vw}
+.landing .brand{font-size:15px;letter-spacing:.12em;color:var(--text)}
+.landing .site-nav a{font-size:12px;letter-spacing:.08em;color:#c7c7bd}
+.landing a:focus-visible,.landing button:focus-visible{outline:2px solid #ffc88f;outline-offset:6px}
+.skip-link{position:fixed;left:20px;top:-100px;z-index:30;background:#17232a;padding:10px 20px}.skip-link:focus{top:10px}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:800px;height:min(920px,100svh);padding:0;border-bottom:1px solid #c4a67820;background:radial-gradient(ellipse at 70% 78%,#39211466,transparent 45%),linear-gradient(#0b151c,#080e11 70%)}
+.night-landscape{position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 75% 5%,#203c4340,transparent 55%)}
+.night-landscape span{position:absolute;inset:44% -5% 0;background:#101b20;opacity:.7;clip-path:polygon(0 43%,12% 19%,22% 42%,33% 12%,44% 46%,56% 28%,65% 45%,79% 3%,90% 28%,100% 13%,100% 100%,0 100%)}
+.night-landscape span+span{inset:54% -5% 0;background:#070d11;clip-path:polygon(0 15%,12% 44%,26% 21%,40% 48%,57% 17%,72% 53%,86% 18%,100% 44%,100% 100%,0 100%)}
+.hero-copy{position:relative;z-index:2;max-width:1440px;margin:auto;padding:190px 5vw 120px;pointer-events:none}
+.hero-copy a{pointer-events:auto}
+.hero__eyebrow{font-size:10px;letter-spacing:.24em;color:#d9ab80;margin:0 0 34px;display:flex;align-items:center;gap:12px}
+.hero__eyebrow>span{display:inline-block;width:28px;height:1px;background:currentColor}
+.hero h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-weight:400;font-size:clamp(46px,5.3vw,76px);letter-spacing:.07em;line-height:1.5;margin:0 0 30px;color:#f4ecdd;text-shadow:0 2px 35px #020709}
+.hero h1 span{color:#edba89}
+.hero-intro{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:20px;letter-spacing:.14em;line-height:2;margin:0 0 17px}
+.hero-description{font-size:12px;line-height:2.2;color:#afb6b5;letter-spacing:.08em;margin:0 0 30px}
+.primary-link{display:inline-flex;gap:37px;align-items:center;border:1px solid #d4a27670;border-radius:2px;padding:13px 21px;background:#be753015;color:#f2d1af;font-size:12px;letter-spacing:.07em;transition:background .25s}
+.primary-link:hover{background:#c689342e;color:#fff1dc;border-color:#eaa567}
+.primary-link span{font-size:20px;line-height:1}
+.release-note{display:flex;align-items:center;gap:8px;font-size:10px;color:#9aabaa;letter-spacing:.05em;margin:17px 0 0}
+.release-note>span{width:4px;height:4px;background:#ce9b65;border-radius:50%}
+.fire-scene{position:absolute;right:0;top:12%;width:65%;height:88%;pointer-events:none;z-index:1}
+.fire-scene canvas{display:block;width:100%;height:100%;position:absolute;inset:0}
+.fire-fallback{position:absolute;width:min(100%,700px);height:100%;left:50%;transform:translateX(-50%)}
+.fire-scene[data-ready="true"] .fire-fallback{visibility:hidden}
+.scene-caption{position:absolute;right:8%;bottom:133px;z-index:2;display:grid;gap:9px;text-align:center;font-size:10px;color:#aaa995;letter-spacing:.22em;pointer-events:none}
+.scene-caption span+span{font-family:serif;letter-spacing:.14em;color:#c9b7a3}
+.motion-control{position:absolute;right:5vw;bottom:37px;z-index:3;padding:9px 13px;color:#c0b6a8;font:11px -apple-system,sans-serif;border:1px solid #baa18b38;border-radius:30px;background:#07101485;cursor:pointer}
+.motion-control span{margin-left:8px;color:#e7b486}.motion-control:hover{background:#273034}
+.scroll-cue{position:absolute;left:5vw;bottom:44px;z-index:3;font-size:9px;letter-spacing:.2em;color:#a9aaa0;border:0;display:flex;align-items:center;gap:16px}.scroll-cue span{font-size:23px;color:#e2ac79}
+.landing .wrap--wide{max-width:1120px;padding:0 32px}
+.landing .section{padding:105px 0;border-bottom:1px solid #d9c6a51a;margin:0}
+.section-kicker{font-size:10px;letter-spacing:.21em;color:#bf916a;margin:0 0 21px}
+.landing .section__title{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:clamp(27px,3.3vw,40px);line-height:1.65;letter-spacing:.07em;font-weight:400;margin:0 0 25px;border:0;padding:0;color:#eee7d9}
+.section-lead{font-size:14px;color:#aab5b7;line-height:2.1;margin-bottom:40px}
+.landing .feature-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0;list-style:none;padding:0;margin:48px 0 0}
+.landing .feature-list li{padding:25px 24px 25px 0;border-top:1px solid #c4a27d25;border-bottom:0;font-size:12px;color:#95a2a6}.landing .feature-list li::before{display:none}
+.landing .feature-list li span{display:block;color:#e3c8a7;font-size:16px;margin-bottom:8px}
+.mode-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:42px}
+.mode-card{position:relative;padding:27px 22px 35px;background:linear-gradient(150deg,#172127,#0b1217);border:1px solid #e6caa91c;border-radius:3px;overflow:hidden}
+.mode-card::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,#b8733020,transparent 70%);pointer-events:none}
+.mode-card:nth-child(2){background:linear-gradient(150deg,#18252a,#0b151c)}.mode-card:nth-child(3){background:linear-gradient(150deg,#2a211c,#121619)}
+.mode-number{font-family:Georgia,serif;font-size:49px;line-height:1.3;color:#bc947552;letter-spacing:-.05em;margin-bottom:45px}
+.mode-label{font-size:8px!important;letter-spacing:.16em;color:#cf9e77!important;margin:0 0 12px!important}
+.mode-card h3{font-family:serif;font-size:17px;font-weight:400;margin:0 0 15px;letter-spacing:.03em;color:#e8d6bb}.mode-card p{font-size:12px;line-height:2;color:#a3adae;margin:0}
+.premium-note{margin-top:24px;padding:21px 25px;border-left:1px solid #a47748;background:#ba906609;font-size:12px;color:#aab2b2;line-height:2}.premium-note p{margin:0}.premium-note strong{color:#d8c4a9;font-weight:500}
+.landing .faq dt{font-weight:500;font-size:14px;color:#d8d0c3;margin-top:28px}.landing .faq dd{font-size:13px;color:#a3afb2;line-height:2;margin:10px 0 0;padding-bottom:25px;border-bottom:1px solid #cab49416}
+.landing .contact-mail a{font-family:Georgia,serif;font-size:26px;color:#d5b491;letter-spacing:.03em}
+.legal-links{display:flex;flex-wrap:wrap;gap:25px;font-size:12px;margin-top:35px}
+.landing .site-footer{border:0;background:#060c10}.landing .site-footer__inner{max-width:1120px;font-size:11px;padding:32px}.landing .site-footer a{color:#b3aca0}
+@media(min-width:1500px){.hero-copy{padding-top:210px}}
+@media(max-width:1000px){.hero h1{font-size:49px}.mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fire-scene{right:-12%;width:75%}.scene-caption{right:5%;bottom:140px}}
+@media(max-width:640px){.landing .site-header__inner{padding:21px 22px;gap:12px;align-items:center}.landing .brand{font-size:12px;white-space:nowrap}.landing .brand__mark{width:19px}.landing .site-nav{gap:14px}.landing .site-nav a{font-size:10px}.landing .site-nav a:last-child{display:none}.hero{height:auto;min-height:1030px}.hero-copy{padding:135px 26px 0}.hero__eyebrow{font-size:9px;letter-spacing:.18em;margin-bottom:23px}.hero h1{font-size:44px;line-height:1.5;margin-bottom:20px}.hero-intro{font-size:17px}.hero-description{font-size:12px;margin-bottom:24px}.fire-scene{top:auto;bottom:38px;right:-10%;width:120%;height:535px}.scene-caption{left:0;right:0;bottom:102px;font-size:8px}.scene-caption span+span{display:none}.scroll-cue{left:26px;bottom:30px;font-size:8px;gap:8px}.motion-control{bottom:24px;right:22px;font-size:10px}.landing .wrap--wide{padding:0 26px}.landing .section{padding:70px 0}.landing .feature-list{grid-template-columns:repeat(2,1fr)}.landing .feature-list li{padding:20px 12px 20px 0;font-size:11px}.landing .feature-list li span{font-size:13px}.mode-grid{gap:10px}.mode-card{padding:21px 17px 25px}.mode-card h3{font-size:15px}.mode-number{margin-bottom:24px}.mode-label{font-size:7px!important}.premium-note{padding:17px}.landing .site-footer__inner{padding:25px 26px;gap:18px}.hero h1{word-break:keep-all}}
+@media(max-width:360px){.hero h1{font-size:38px}.landing .site-nav{gap:10px}.hero-copy{padding-left:22px}.mode-grid{grid-template-columns:1fr}.landing .brand{letter-spacing:0}.landing .section__title{font-size:22px;letter-spacing:.04em}.scroll-cue{font-size:7px;letter-spacing:.1em;left:22px}.motion-control{right:18px;padding:10px;font-size:9px}}
+@media(prefers-reduced-motion:reduce){.landing *{scroll-behavior:auto!important;transition:none!important}}
+.landing .brand__flame{animation:none}
