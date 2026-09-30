@@ -4,188 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Use / 利用規約 — 月あかり Tsukiakari</title>
-  <style>
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #f2de99;
-      --text: rgba(232,224,208,0.85);
-      --text-dim: rgba(232,224,208,0.45);
-      --border: rgba(201,168,76,0.2);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
-      background: #0a0015;
-      color: var(--text);
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 48px 24px 100px;
-      line-height: 1.85;
-    }
-    header { text-align: center; margin-bottom: 48px; }
-    header .moon { font-size: 3rem; display: block; margin-bottom: 12px; }
-    header h1 { color: var(--gold-light); font-weight: 300; font-size: 1.5rem; letter-spacing: 0.04em; }
-    header p { color: var(--text-dim); font-size: 0.9rem; margin-top: 6px; }
-    .lang-toggle {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 40px;
-    }
-    .lang-toggle button {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      border-radius: 20px;
-      padding: 6px 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-    }
-    .lang-toggle button.active { border-color: var(--gold); color: var(--gold); }
-    .section { border-top: 1px solid var(--border); padding-top: 28px; margin-top: 28px; }
-    h2 { color: var(--gold); font-weight: 400; font-size: 1rem; margin-bottom: 12px; }
-    p { font-size: 0.95rem; margin-bottom: 10px; }
-    ul { padding-left: 1.4em; margin-bottom: 10px; }
-    li { font-size: 0.95rem; margin-bottom: 6px; }
-    strong { color: var(--gold-light); font-weight: 500; }
-    a { color: var(--gold); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .updated { color: var(--text-dim); font-size: 0.82rem; margin-top: 64px; text-align: center; }
-    [data-lang="en"] { display: none; }
-    body.en [data-lang="ja"] { display: none; }
-    body.en [data-lang="en"] { display: block; }
-    nav { text-align: center; margin-bottom: 32px; font-size: 0.88rem; }
-    nav a { color: var(--text-dim); margin: 0 12px; }
-    nav a:hover { color: var(--gold); }
+<style>
+    :root{--paper:#f5f1e8;--paper2:#eae4d7;--ink:#272923;--muted:#727268;--line:#d9d2c4;--ochre:#99743c;--white:#fffdf8}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;background:var(--paper);color:var(--ink);max-width:760px;margin:0 auto;padding:36px 24px 90px;line-height:1.85}
+    header{text-align:center;margin:28px 0 30px}header .moon{display:block;margin:0 auto 14px;width:68px;height:68px;border-radius:20px}header h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:var(--ink);font-weight:500;font-size:1.55rem;letter-spacing:.04em}header p{color:var(--muted);font-size:.92rem;margin-top:6px}
+    .lang-toggle{display:flex;justify-content:center;gap:8px;margin-bottom:30px}.lang-toggle button{background:var(--white);border:1px solid var(--line);color:var(--muted);border-radius:20px;padding:7px 18px;cursor:pointer;font-size:.85rem}.lang-toggle button.active{border-color:var(--ochre);color:var(--ochre)}
+    .section{border-top:1px solid var(--line);padding-top:24px;margin-top:24px}h2{color:var(--ochre);font-weight:650;font-size:1rem;margin-bottom:10px}p{font-size:.95rem;margin-bottom:10px}ul{padding-left:1.4em;margin-bottom:10px}li{font-size:.95rem;margin-bottom:6px}strong{color:var(--ink);font-weight:700}a{color:var(--ochre);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}.updated{color:var(--muted);font-size:.82rem;margin-top:52px;text-align:center}
+    [data-lang="en"]{display:none}body.en [data-lang="ja"]{display:none}body.en [data-lang="en"]{display:block}nav{text-align:center;margin-bottom:24px;font-size:.88rem}nav a{color:var(--muted);margin:0 12px;text-decoration:none}nav a:hover{color:var(--ink)}
+    @media(max-width:520px){body{padding:22px 18px 64px}.section{padding-top:20px;margin-top:20px}}
   </style>
 </head>
 <body>
-
 <header>
-  <span class="moon">🌙</span>
+  <img class="moon" src="assets/app-icon.jpg" alt="月あかり app icon">
   <h1>月あかり &nbsp;·&nbsp; Tsukiakari</h1>
   <p data-lang="ja">利用規約</p>
   <p data-lang="en">Terms of Use</p>
 </header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="privacy.html">Privacy</a>
-  <a href="terms.html">Terms</a>
-</nav>
-
+<nav><a href="index.html">Home / ホーム</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
 <div class="lang-toggle">
   <button class="active" onclick="setLang('ja')">日本語</button>
   <button onclick="setLang('en')">English</button>
 </div>
-
-<!-- ==================== JAPANESE ==================== -->
 <div data-lang="ja">
-
-<p>「月あかり」（以下、本アプリ）をご利用いただく前に、以下の利用規約をお読みください。本アプリをインストール・使用することで、本規約に同意したものとみなします。</p>
-
-<div class="section">
-  <h2>1. 利用許諾</h2>
-  <p>開発者は、本規約に従い、本アプリを個人の非商用目的でのみ使用するための、取消可能・非独占・譲渡不可のライセンスを付与します。</p>
+<p>「月あかり」（以下「本アプリ」）の利用条件を定めます。本アプリを利用する前にお読みください。</p>
+<div class="section"><h2>1. 利用許諾</h2><p>運営者は、本規約に従い、本アプリをお客様の端末で利用するための、非独占・譲渡不可のライセンスを付与します。適用法令で認められる権利を本規約が制限するものではありません。</p></div>
+<div class="section"><h2>2. 禁止事項</h2><ul><li>違法な目的または第三者の権利を侵害する目的で利用すること</li><li>本アプリを改変、複製、再配布または販売すること</li><li>事前の書面による許可なく、本アプリを商用目的で利用すること</li><li>適用法令で認められる場合を除き、本アプリのリバースエンジニアリング、逆コンパイルまたは逆アセンブルを行うこと</li><li>本アプリまたは関連サービスの運営を妨害すること</li></ul></div>
+<div class="section"><h2>3. Proのアプリ内購入</h2><p>ProはAppleのApp Storeを通じた一回限りの買い切り型アプリ内購入で、定期購読ではありません。年間の月相一覧、惑星の星座・接近情報、通知時刻のカスタマイズ、誕生日と同じ月相に再び出会う日の表示が含まれます。購入時にApp Storeが表示する価格・条件をご確認ください。購入済みProは同じApple Accountで復元できます。決済、領収書、購入履歴および返金申請はAppleの手続きに従います。</p></div>
+<div class="section"><h2>4. 情報の正確性</h2><p>月相、旧暦、二十四節気、七十二候、月の出・月の入り、惑星の見え方などはアプリ内の計算による参考情報です。公的機関の発表値と異なる場合があります。重要な判断には公式情報をご確認ください。本アプリは医療、健康、災害、天体観測の安全に関する助言を提供するものではありません。</p></div>
+<div class="section"><h2>5. 免責と消費者の権利</h2><p>本アプリは利用可能な状態で提供されます。適用法令で許される範囲で、運営者は本アプリの利用または利用不能に起因する損害について責任を負いません。ただし、適用法令により除外・制限できない責任や、お客様の法定の権利を本規約で免除・制限するものではありません。</p></div>
+<div class="section"><h2>6. 知的財産権</h2><p>本アプリのコード、デザイン、文章、画像その他のコンテンツに関する権利は、運営者または正当な権利者に帰属します。本規約で明示的に許諾する範囲を超えて利用することはできません。</p></div>
+<div class="section"><h2>7. 変更・提供終了</h2><p>運営者は、機能や本規約を変更し、または本アプリの提供を終了することがあります。重要な変更は、可能な範囲でアプリ内または公開ページでお知らせします。変更後の規約は掲載時に効力を生じ、継続利用により同意したものとみなされる場合があります。法令上必要な同意がある場合は別途取得します。</p></div>
+<div class="section"><h2>8. 準拠法・管轄</h2><p>本規約は日本法に準拠します。紛争は、適用法令で許される範囲で、日本の管轄裁判所で解決します。お客様に適用される強行法規上の権利を妨げません。</p></div>
+<div class="section"><h2>9. お問い合わせ</h2><p>本規約に関するお問い合わせは <a href="mailto:contact@div-me.com">contact@div-me.com</a> までご連絡ください。</p></div>
 </div>
-
-<div class="section">
-  <h2>2. 禁止事項</h2>
-  <ul>
-    <li>本アプリのリバースエンジニアリング・逆コンパイル・逆アセンブル</li>
-    <li>本アプリを改変・複製し、第三者に配布または販売すること</li>
-    <li>本アプリを商用目的で使用すること（事前の書面による許諾がない場合）</li>
-    <li>違法な目的または第三者の権利を侵害する目的での使用</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>3. 情報の正確性</h2>
-  <p>本アプリが表示する月相・旧暦・二十四節気・七十二候・月の出入り時刻などの情報は、天文計算アルゴリズムによる参考値です。専門機関（国立天文台等）の発表値と若干異なる場合があります。重要な用途には必ず公式データをご確認ください。</p>
-</div>
-
-<div class="section">
-  <h2>4. 免責事項</h2>
-  <p>本アプリは「現状のまま」提供されます。開発者は、本アプリの使用または使用不能から生じるいかなる損害についても、法令で許容される最大限の範囲で責任を負いません。本アプリの情報は占い・医療・健康アドバイスではありません。</p>
-</div>
-
-<div class="section">
-  <h2>5. 知的財産権</h2>
-  <p>本アプリのコード・デザイン・テキスト・グラフィックに関する知的財産権はすべて開発者に帰属します。</p>
-</div>
-
-<div class="section">
-  <h2>6. サービスの変更・終了</h2>
-  <p>開発者は予告なく本アプリの機能変更・アップデート停止・配信終了を行う場合があります。</p>
-</div>
-
-<div class="section">
-  <h2>7. 準拠法・管轄</h2>
-  <p>本規約は日本法に準拠し、日本の裁判所を専属的合意管轄とします。</p>
-</div>
-
-<div class="section">
-  <h2>8. お問い合わせ</h2>
-  <p>本規約に関するご質問は <a href="https://github.com/ryam244/20260507/issues">GitHub Issues</a> よりお問い合わせください。</p>
-</div>
-
-</div><!-- /ja -->
-
-<!-- ==================== ENGLISH ==================== -->
 <div data-lang="en">
-
-<p>Please read these Terms of Use before using "Tsukiakari" ("the App"). By installing or using the App, you agree to be bound by these terms.</p>
-
-<div class="section">
-  <h2>1. License</h2>
-  <p>The Developer grants you a revocable, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes only, in accordance with these Terms.</p>
+<p>These Terms govern your use of “Tsukiakari” (the “App”). Please read them before using the App.</p>
+<div class="section"><h2>1. License</h2><p>The Operator grants you a non-exclusive, non-transferable license to use the App on your devices in accordance with these Terms. Nothing here limits rights that cannot be restricted under applicable law.</p></div>
+<div class="section"><h2>2. Restrictions</h2><ul><li>Do not use the App for unlawful purposes or to infringe another person’s rights.</li><li>Do not modify, reproduce, redistribute or sell the App.</li><li>Do not use the App for commercial purposes without prior written permission.</li><li>Do not reverse engineer, decompile or disassemble the App, except where applicable law permits.</li><li>Do not interfere with the operation of the App or related services.</li></ul></div>
+<div class="section"><h2>3. Pro In-App Purchase</h2><p>Pro is a one-time, non-consumable in-app purchase through Apple’s App Store; it is not a subscription. It includes the full-year moon-phase calendar, planetary constellations and conjunction details, custom notification times, and the date your birthday moon phase returns. Review the price and terms shown by the App Store before purchasing. You can restore Pro through the same Apple Account. Apple’s procedures apply to payment, receipts, purchase history and refund requests.</p></div>
+<div class="section"><h2>4. Accuracy of Information</h2><p>Moon phases, lunar dates, the 24 solar terms, 72 micro-seasons, moonrise and moonset, and planetary visibility are calculated in the App and provided for reference. Results may differ from official sources. Consult authoritative sources for important decisions. The App does not provide medical, health, emergency or observational safety advice.</p></div>
+<div class="section"><h2>5. Liability and Consumer Rights</h2><p>The App is provided on an “as available” basis. To the extent permitted by applicable law, the Operator is not liable for damages arising from use of or inability to use the App. Nothing in these Terms excludes or limits liability that cannot be excluded under applicable law or any statutory rights you may have.</p></div>
+<div class="section"><h2>6. Intellectual Property</h2><p>Rights in the App’s code, design, text, images and other content belong to the Operator or the applicable rights holders. You may not use them beyond the permissions expressly granted in these Terms.</p></div>
+<div class="section"><h2>7. Changes and Discontinuation</h2><p>The Operator may change features or these Terms, or discontinue the App. Where practical, material changes will be announced in the App or on the public page. Revised Terms take effect when posted; continued use may indicate acceptance where permitted by law. Any consent required by law will be obtained separately.</p></div>
+<div class="section"><h2>8. Governing Law and Venue</h2><p>These Terms are governed by Japanese law. To the extent permitted by applicable law, disputes will be resolved by a court with jurisdiction in Japan. This does not limit mandatory rights available to you under applicable law.</p></div>
+<div class="section"><h2>9. Contact</h2><p>For questions about these Terms, email <a href="mailto:contact@div-me.com">contact@div-me.com</a>.</p></div>
 </div>
-
-<div class="section">
-  <h2>2. Restrictions</h2>
-  <ul>
-    <li>You may not reverse engineer, decompile, or disassemble the App.</li>
-    <li>You may not copy, modify, or redistribute the App to third parties.</li>
-    <li>You may not use the App for commercial purposes without prior written consent.</li>
-    <li>You may not use the App for any illegal purpose or to infringe third-party rights.</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>3. Accuracy of Information</h2>
-  <p>Moon phases, lunar calendar dates, seasonal divisions, and moonrise/moonset times are calculated using astronomical algorithms and are provided for reference only. Values may differ slightly from official sources such as the National Astronomical Observatory of Japan. Please verify with official data for critical purposes.</p>
-</div>
-
-<div class="section">
-  <h2>4. Disclaimer of Warranties</h2>
-  <p>The App is provided "as is." To the maximum extent permitted by law, the Developer disclaims all liability for any damages arising from use or inability to use the App. Information in the App does not constitute fortune-telling, medical, or health advice.</p>
-</div>
-
-<div class="section">
-  <h2>5. Intellectual Property</h2>
-  <p>All intellectual property rights in the App's code, design, text, and graphics remain with the Developer.</p>
-</div>
-
-<div class="section">
-  <h2>6. Changes &amp; Termination</h2>
-  <p>The Developer may modify, suspend, or discontinue the App at any time without notice.</p>
-</div>
-
-<div class="section">
-  <h2>7. Governing Law</h2>
-  <p>These Terms are governed by the laws of Japan. Any disputes shall be subject to the exclusive jurisdiction of Japanese courts.</p>
-</div>
-
-<div class="section">
-  <h2>8. Contact</h2>
-  <p>For questions about these Terms, please open an issue at <a href="https://github.com/ryam244/20260507/issues">GitHub Issues</a>.</p>
-</div>
-
-</div><!-- /en -->
-
-<p class="updated">Last updated: May 2026 &nbsp;·&nbsp; 最終更新：2026年5月</p>
-
+<p class="updated">Last updated: September 29, 2026 &nbsp;·&nbsp; 最終更新：2026年9月29日</p>
 <script>
   function setLang(lang) {
     document.body.className = lang === 'en' ? 'en' : '';
@@ -194,9 +60,7 @@
     });
     document.documentElement.lang = lang;
   }
-  if (navigator.language && navigator.language.startsWith('ja') === false) {
-    setLang('en');
-  }
+  if (navigator.language && !navigator.language.startsWith('ja')) { setLang('en'); }
 </script>
 </body>
 </html>
