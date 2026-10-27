@@ -42,6 +42,8 @@ h3 { font-size: 1.15rem; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 22px; border-radius: 14px; color: var(--white); background: var(--primary); font-weight: 750; text-decoration: none; }
 .button:hover { color: var(--white); background: #5240ad; }
 .button.secondary { color: var(--primary); background: var(--lavender); }
+.button { max-width: 100%; text-align: center; }
+.legal-link { margin-top: 18px; font-size: .85rem; }
 .small { color: var(--muted); font-size: .82rem; }
 .hero .small { margin-top: 12px; }
 .hero-art { display: flex; justify-content: center; padding: 32px 38px 38px; border-radius: 48% 48% 22px 22px; background: var(--lavender); }
@@ -82,7 +84,7 @@ details p { margin: 14px 0 0; color: var(--muted); }
 @media (max-width: 760px) {
   .site-header { align-items: flex-start; flex-direction: column; }
   .hero, .split { grid-template-columns: 1fr; gap: 34px; padding-top: 42px; }
-  .hero-art { order: -1; }
+  .hero-art { order: 0; }
   .trust-row { align-items: flex-start; flex-direction: column; gap: 4px; }
   .grid-three, .plans { grid-template-columns: 1fr; }
   .section { padding: 68px 0; }
